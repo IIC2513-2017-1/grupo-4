@@ -3,7 +3,7 @@ class User < ApplicationRecord
     before_save { self.email = email.downcase }
 
     # Declaración de roles
-    enum role: [:ADMIN, :USER]
+    enum role: { "admin" => 0, "user" => 1}
     validates :role, presence: true
 
     # Validaciones de Rails
