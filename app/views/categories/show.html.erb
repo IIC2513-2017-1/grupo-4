@@ -9,8 +9,8 @@
             <ul>
                 <li> <strong>Nombre: </strong> <%=@category.name %> </li>
                 <li> <strong>Descripcion: </strong> <%= @category.description %> </li>
-                <li> <%= link_to "Editar Categoria", "/edit", class: "button"%> </li> 
-                <li> <%= link_to "Eliminar Categoria", "/eliminar", class: "button"%> </li> 
+                <li> <%= link_to "Editar categoria", edit_category_path(@category), class: "button"%> </li> 
+                <li> <%= link_to "Eliminar categoria", category_path(@category), data: { :confirm => "¿Estás seguro que deseas eliminar la categoría?" }, :method => :delete, class: "button"%> </li> 
                 
             
             </ul>
