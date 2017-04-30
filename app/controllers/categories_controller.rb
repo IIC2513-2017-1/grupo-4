@@ -1,13 +1,18 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
+  # GET /categories
+  def index 
+    @categories = Category.all   
+  end
+
   # GET /categories/new
   def new
     @category = Category.new
   end
   
   # GET /categories/:id
-  def show
+  def show    
   end
 
   # POST /categories
