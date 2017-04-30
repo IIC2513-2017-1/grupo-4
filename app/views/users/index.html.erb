@@ -1,21 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="container" id="view-users-container">
+  <div class="row">
+    <div class="col-8 col-offset-2">
+      <div class="panel">
+        <div class="panel-heading">
+          <h2>Usuarios</h2>
+        </div>
+        <div class="panel-body">
+          <p id="notice"><%= notice %></p>
+          <table>
+            <thead>
+              <tr>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
 
-<h1>Users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <td><%= link_to 'Show', user %></td>
+                  <td><%= link_to 'Edit', edit_user_path(user) %></td>
+                  <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -48,6 +48,18 @@ body {
     }
 }
 
+#alert-container, #notice-container {
+    padding: 10px 0 10px 0;
+}
+
+#notice-container {
+    background: #d9edf7;
+}
+
+#alert-container {
+    background: #f2dede;
+}
+
 footer {
     background: $dark-black;
     color: white;

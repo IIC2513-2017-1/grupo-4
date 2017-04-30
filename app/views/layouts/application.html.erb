@@ -10,6 +10,8 @@
 
   <body>
     <%= render "layouts/navbar" %>
+    <%= render "layouts/notice", notice: notice %>
+    <%= render "layouts/alert", alert: alert %>
     <%= yield %>
     <%= render "layouts/footer" %>
   </body>

@@ -1,6 +1,25 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  # GET /signup
+  def signup_new
+    @user = User.new
+  end
+
+  # POST /signup
+  def signup_create
+    @user = User.new(user_params)
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to "/login", notice: "Usuario creado exitosamente."}
+      else
+        format.html { render :signup_new }
+      end
+    end
+  end
+
+
   # GET /users
   # GET /users.json
   def index
@@ -12,13 +31,8 @@ class UsersController < ApplicationController
   def show
   end
 
-  # GET /signup
   def new
     @user = User.new
-  end
-
-  # GET /login
-  def login
   end
 
   # GET /users/1/edit
@@ -73,7 +87,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params[:role] = params[:role].to_i
       params.require(:user).permit(
         :first_name,
         :last_name,
