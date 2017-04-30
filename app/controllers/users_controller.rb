@@ -20,15 +20,13 @@ class UsersController < ApplicationController
   end
 
 
-  # GET /users
-  # GET /users.json
+  # GET /users 
   def index
     @users = User.all
   end
 
-  # GET /users/1
-  # GET /users/1.json
-  def show
+  # GET /users/1 
+  def show        
   end
 
   def new
@@ -40,13 +38,12 @@ class UsersController < ApplicationController
   end
 
   # POST /users
-  # POST /users.json
   def create
     @user = User.new(user_params)
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, notice: 'Usuario creado exitosamente.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -60,7 +57,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'Usuario actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -74,7 +71,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: 'Usuario eliminado exitosamente.' }
       format.json { head :no_content }
     end
   end
