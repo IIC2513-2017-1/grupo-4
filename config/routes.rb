@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   # Categories routes
   resources :categories
-  get 'products/show'
+
+  # Products routes
+  resources :products
   
   # Root route
   root "static_pages#home"
