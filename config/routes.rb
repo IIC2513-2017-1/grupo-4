@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  # User routes
+  # Users routes
   resources :users
 
   # Authentication
