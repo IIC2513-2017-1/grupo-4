@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1>Detalle de la categoria</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <ul>
+                <li> <strong>Nombre: </strong> <%=@category.name %> </li>
+                <li> <strong>Descripcion: </strong> <%= @category.description %> </li>
+                <li> <%= link_to "Editar categoria", edit_category_path(@category), class: "button"%> </li> 
+                <li> <%= link_to "Eliminar categoria", category_path(@category), data: { :confirm => "¿Estás seguro que deseas eliminar la categoría?" }, :method => :delete, class: "button"%> </li> 
+                
+            
+            </ul>
+        </div>        
+    </div>
+    <div class="row">
+        <table>
+            <tr>
+                <th> Sku </th>
+                <th> Nombre </th>
+                <th> Descripcion </th>
+                <th> Precio </th>
+            </tr>
+            <tr>
+                <td> 1 </td>
+                <td> Pisco Alto del Carmen </td>
+                <td> Pisco chileno de 40°</td>
+                <td> $4.990</td>
+                <td> <%= link_to "Editar Producto", "/edit", class: "button"%> </td>
+                <td> <%= link_to "Eliminar Producto", "/eliminar", class: "button"%> </td>
+            </tr>
+            <tr>
+                <td> 1 </td>
+                <td> Pisco Mistral </td>
+                <td> Pisco chileno de 35°</td>
+                <td> $3.900</td>
+                <td> <%= link_to "Editar Producto", "/edit", class: "button"%> </td>
+                <td> <%= link_to "Eliminar Producto", "/eliminar", class: "button"%> </td>
+            </tr>
+        </table>
+    </div>
+
+</div>

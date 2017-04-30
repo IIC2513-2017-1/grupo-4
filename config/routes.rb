@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # User routes
   resources :users
 
@@ -9,6 +10,10 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
 
+  # Categories routes
+  resources :categories
+  get 'products/show'
+  
   # Root route
   root "static_pages#home"
 end
