@@ -1,16 +1,15 @@
-<%= render "layouts/navbar" %>
-
 <div class="container">
     <div class="row">
-        <h1 class="text-margin">Jack Daniels Old No.7</h1>
+        <h1 class="text-margin"><%= @product.name %></h1>
     </div>
     <div class="row">
         <div class="col-2">
-            <h5><strong>Precio:</strong> $19.990</h5>
+            <h5><strong>Precio:</strong> $<%= @product.price %> CLP</h5>
+            <h5><strong>Categoría:</strong> <%= link_to @product.category.name, category_path(@product.category) %></h5>
         </div>
         <div class="col-4">
-            <a class="button" href="#">Editar</a>
-            <a class="button" href="#">Eliminar</a>
+            <%= link_to "Editar", edit_product_path(@product), class: "button" %>
+            <%= link_to "Eliminar", product_path(@product), data: { :confirm => "¿Estás seguro que deseas eliminar el producto?" }, :method => :delete, class: "button" %>
             <a class="button" href="#">Agregar al carro</a>
         </div>
     </div>
@@ -20,14 +19,8 @@
         </div>
         <div class="col-10">
             <p class="text-margin">                 
-                Mellowed drop by drop through 10-feet of sugar maple charcoal,<br>
-                then matured in handcrafted barrels of our own making. And our<br>
-                Tennessee Whiskey doesn’t follow a calendar. It’s only ready when<br>
-                our tasters say it is. We judge it by the way it looks. By its aroma.<br>
-                And of course, by the way it tastes. It’s how Jack Daniel himself did<br>
-                it over a century ago. And how we still do it today.
+                <%= @product.description %>
             </p>
         </div>
     </div>
-
 </div>
