@@ -1,14 +1,16 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show]
+  before_action :set_category, only: [:show, :edit, :update]
 
+  # GET /categories/new
   def new
     @category = Category.new
   end
   
+  # GET /categories/:id
   def show
-    
   end
 
+  # POST /categories
   def create
     @category = Category.new(category_params)
   
@@ -16,6 +18,19 @@ class CategoriesController < ApplicationController
       redirect_to @category, notice: 'Category was succes sfully created.'       
     else
       render :new
+    end
+  end
+
+  # GET /categories/:id/edit
+  def edit
+  end
+
+  # PATCH /categories/:id
+  def update
+    if @category.update(category_params)
+      redirect_to @category, notice: "Categoría actualizada exitosamente."
+    else
+      render :edit
     end
   end
 
