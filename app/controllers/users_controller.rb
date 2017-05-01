@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       end
     end
   end
-
+  
 
   # GET /users 
   def index
@@ -29,8 +29,8 @@ class UsersController < ApplicationController
   def show        
   end
 
-  def new
-    @user = User.new
+  def new 
+    @user = User.new  
   end
 
   # GET /users/1/edit
@@ -43,17 +43,14 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'Usuario creado exitosamente.' }
-        format.json { render :show, status: :created, location: @user }
+        format.html { redirect_to @user, notice: 'Usuario creado exitosamente.' }        
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html { render :new }        
       end
     end
   end
 
   # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
       if @user.update(user_params)
@@ -67,7 +64,6 @@ class UsersController < ApplicationController
   end
 
   # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @user.destroy
     respond_to do |format|
