@@ -1,32 +1,40 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <h1>Todas las categorias</h1>
+            <h1>Categorías</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-8">
-            <table>
-            <thead>
-                <tr>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                </tr>
-            </thead>
+            <% if @categories.length > 0 %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                        </tr>
+                    </thead>
 
-            <tbody>
-                <% @categories.each do |category| %>
-                <tr>
-                    <td> <%= category.name %> </td>
-                    <td> <%= category.description %> </td>
-                    <td> <%= link_to "Ver Categoria", category_path(category), class: "button"%> </td>
-                    <td> <%= link_to "Editar Categoria", edit_category_path(category), class: "button"%> </td>
-                    <td> <%= link_to "Eliminar categoria", category_path(category), data: { :confirm => "¿Estás seguro que deseas eliminar la categoría?" }, :method => :delete, class: "button"%> </td> 
-
-                </tr>
-                <% end %>
-            </tbody>
-            </table>
+                    <tbody>
+                        <% @categories.each do |category| %>
+                            <tr>
+                                <td> <%= category.name %> </td>
+                                <td> <%= category.description %> </td>
+                                <td> <%= link_to "Ver Categoria", category_path(category), class: "button"%> </td>
+                                <td> <%= link_to "Editar Categoria", edit_category_path(category), class: "button"%> </td>
+                                <td> <%= link_to "Eliminar categoria", category_path(category), data: { :confirm => "¿Estás seguro que deseas eliminar la categoría?" }, :method => :delete, class: "button"%> </td> 
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            <% else %>
+                <h3>Aún no hay categorías en el sistema.</h3>
+            <% end %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <%= link_to "Crear categoría", new_category_path, class: "button" %>
         </div>
     </div>
 </div>

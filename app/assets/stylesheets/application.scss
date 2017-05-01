@@ -48,6 +48,15 @@ body {
     }
 }
 
+#site-navigation {
+    padding: 10px 0 10px 0;
+    background: white;
+
+    ul li {
+        display: inline-block;
+    }
+}
+
 #alert-container, #notice-container {
     padding: 10px 0 10px 0;
 }
