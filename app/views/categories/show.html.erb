@@ -17,30 +17,37 @@
         </div>        
     </div>
     <div class="row">
-        <table>
-            <tr>
-                <th> Sku </th>
+        <div class="col-6">
+            <h4>Productos</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <table>
+            <thead>
+                <tr>
+                <th> SKU </th>
                 <th> Nombre </th>
-                <th> Descripcion </th>
+                <th> Descripcion</th>
                 <th> Precio </th>
-            </tr>
-            <tr>
-                <td> 1 </td>
-                <td> Pisco Alto del Carmen </td>
-                <td> Pisco chileno de 40°</td>
-                <td> $4.990</td>
-                <td> <%= link_to "Editar Producto", "/edit", class: "button"%> </td>
-                <td> <%= link_to "Eliminar Producto", "/eliminar", class: "button"%> </td>
-            </tr>
-            <tr>
-                <td> 1 </td>
-                <td> Pisco Mistral </td>
-                <td> Pisco chileno de 35°</td>
-                <td> $3.900</td>
-                <td> <%= link_to "Editar Producto", "/edit", class: "button"%> </td>
-                <td> <%= link_to "Eliminar Producto", "/eliminar", class: "button"%> </td>
-            </tr>
-        </table>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% @category.products.each do |product| %>
+                <tr>
+                    <td> <%= product.sku %> </td>
+                    <td> <%= product.name %> </td>
+                    <td> <%= product.description %> </td>
+                    <td> <%= product.price %> </td>
+                    <td> <%= link_to "Ver producto", product_path(product), class: "button"%> </td>
+                    <td> <%= link_to "Editar producto", edit_product_path(product), class: "button"%> </td>
+                    <td> <%= link_to "Eliminar producto", product_path(product), data: { :confirm => "¿Estás seguro que deseas eliminar el producto?" }, :method => :delete, class: "button"%> </td>
+                </tr>
+                <% end %>
+            </tbody>
+            </table>
+        </div>
     </div>
 
 </div>

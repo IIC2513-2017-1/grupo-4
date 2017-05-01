@@ -19,9 +19,10 @@
                 <tr>
                     <td> <%= category.name %> </td>
                     <td> <%= category.description %> </td>
-                    <td> <%= link_to "Ver Categoria", "/ver", class: "button"%> </td>
-                    <td> <%= link_to "Editar Categoria", "/edit", class: "button"%> </td>
-                    <td> <%= link_to "Eliminar Categoria", "/edit", class: "button"%> </td>
+                    <td> <%= link_to "Ver Categoria", category_path(category), class: "button"%> </td>
+                    <td> <%= link_to "Editar Categoria", edit_category_path(category), class: "button"%> </td>
+                    <td> <%= link_to "Eliminar categoria", category_path(category), data: { :confirm => "¿Estás seguro que deseas eliminar la categoría?" }, :method => :delete, class: "button"%> </td> 
+
                 </tr>
                 <% end %>
             </tbody>
