@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories
   def index 
-    @categories = Category.all   
+    @categories = Category.all       
   end
 
   # GET /categories/new
@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
   
     if @category.save
-      redirect_to @category, notice: 'Category was succes sfully created.'       
+      redirect_to @category, notice: "Categoría creada exitosamente."
     else
       render :new
     end
