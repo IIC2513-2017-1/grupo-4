@@ -1,0 +1,4 @@
+<%= simple_form_for [@product, @comment] do |f| %> 
+    <%= f.text_area :comentario, :cols => "40", :rows => "8" %>
+    <%= f.button :submit %>
+<% end %>

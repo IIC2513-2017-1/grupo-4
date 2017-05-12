@@ -1,4 +1,4 @@
-<div class="container">
+ <div class="container">
     <div class="row">
         <h1 class="text-margin"><%= @product.name %></h1>
     </div>
@@ -25,6 +25,39 @@
             <p class="text-margin">                 
                 <%= @product.description %>
             </p>
+        </div>        
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div col-4>
+            <h4>Comentarios</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div col-8>
+            <table>
+                <tbody>
+                    <% @comments.each do |comment| %>
+                    <tr class="row2">
+                        <td><%= comment.user.first_name%></td>
+                        <td><%= comment.created_at %></td>
+                        <td><%= comment.id %></td>
+                        <td><%= @product.id %></td>                    
+                        <td><%= link_to "Eliminar", product_comment_path(@product, comment), data: { :confirm => "¿Estás seguro que deseas eliminar este comentario?" }, :method => :delete, class: "button" %></td>
+                    </tr>
+                    <tr>                        
+                        <td><%= comment.comentario %></td>                        
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-10">
+            <%= render "comment_form", comment: @comment %>
         </div>
     </div>
 </div>

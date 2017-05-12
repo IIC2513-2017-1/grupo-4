@@ -24,6 +24,8 @@ class ProductsController < ApplicationController
 
   # GET /products/:id
   def show
+    @comment = Comment.new
+    @comments = Comment.all
   end
 
   # GET /products/:id/edit
