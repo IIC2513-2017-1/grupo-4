@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   resources :categories
 
   # Products routes
-  resources :products
+  resources :products do
+    post "/cart", to: "shopping_carts#add"
+    delete "/cart", to: "shopping_carts#destroy"
+  end
+  get "/cart", to: "shopping_carts#index"
   
   # Root route
   root "static_pages#home"

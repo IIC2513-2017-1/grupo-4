@@ -10,7 +10,7 @@
         <div class="col-4">
             <%= link_to "Editar", edit_product_path(@product), class: "button" %>
             <%= link_to "Eliminar", product_path(@product), data: { :confirm => "¿Estás seguro que deseas eliminar el producto?" }, :method => :delete, class: "button" %>
-            <a class="button" href="#">Agregar al carro</a>
+            <%= link_to "Agregar al carro", product_cart_path(@product), class: "button", :method => :post %>
         </div>
     </div>
     <div class="row">
