@@ -39,7 +39,7 @@
             <table>
                 <tbody>
                     <% @comments.each do |comment| %>
-                    <tr class="row2">
+                    <tr class="comments-table">
                         <td><%= comment.user.first_name%></td>
                         <td><%= comment.created_at %></td>
                         <td><%= comment.id %></td>
@@ -47,7 +47,7 @@
                         <td><%= link_to "Eliminar", product_comment_path(@product, comment), data: { :confirm => "¿Estás seguro que deseas eliminar este comentario?" }, :method => :delete, class: "button" %></td>
                     </tr>
                     <tr>                        
-                        <td><%= comment.comentario %></td>                        
+                        <td><%= comment.body %></td>                        
                     </tr>
                     <% end %>
                 </tbody>

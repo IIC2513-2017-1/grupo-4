@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
   # GET /products/:id
   def show
     @comment = Comment.new
-    @comments = Comment.all
+    @comments = @product.comments
   end
 
   # GET /products/:id/edit
