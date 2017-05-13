@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+    # Relaciones 
+    has_many :comments
+    
     # Manejar de la misma manera tEST@example.com y test@example.com
     before_save { self.email = email.downcase }
 
@@ -16,7 +19,7 @@ class User < ApplicationRecord
     
     validates :first_name, presence: true
     validates :last_name, presence: true
-
+    
     # Contraseñas
     has_secure_password
     validates :password, presence: true

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # Users routes
   resources :users
 
@@ -19,6 +18,10 @@ Rails.application.routes.draw do
     delete "/cart", to: "shopping_carts#destroy"
   end
   get "/cart", to: "shopping_carts#index"
+
+  resources :products do 
+    resources :comments, only: [:create, :destroy]
+  end
   
   # Root route
   root "static_pages#home"
