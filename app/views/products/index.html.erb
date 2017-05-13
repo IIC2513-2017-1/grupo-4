@@ -5,46 +5,31 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-8">
-            <% if @products.length > 0 %>
-            <table>
-            <thead>
-                <tr>
-                    <th>SKU</th>
-                    <th>Categoría</th>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th></th>
-                    <th></th>
-                    <% if current_user && current_user.admin_role? %>
-                    <th></th>
-                    <th></th>
+        <% if @products.length > 0 %>
+            <% @products.each do |product| %>
+            <div class="featured-product col-2">
+                <h4><%= link_to product.name, product_path(product) %></h4>
+                <p class="text-center">
+                    <%= link_to image_tag(product.image.url), product_path(product) %>
+                    <strong>Precio:</strong> <%= product.price %> <br />
+                    <%= link_to "Ver producto", product_path(product), class: "button" %>
+                    <% if current_user %>
+                        <br />
+                        <%= link_to "Agregar al carro", product_cart_path(product), class: "button", :method => :post %>
+                        <% if current_user.admin_role? %>
+                            <br />
+                            <%= link_to "Editar producto", edit_product_path(product), class: "button" %> <br />
+                            <%= link_to "Eliminar producto", product_path(product), data: { :confirm => "¿Estás seguro que deseas eliminar este producto?" }, :method => :delete, class: "button" %>
+                        <% end %>
                     <% end %>
-                </tr>
-            </thead>
-
-            <tbody>
-                <% @products.each do |product| %>
-                <tr>
-                    <td><%= product.sku %></td>
-                    <td><%= product.category.name %></td>
-                    <td><%= product.name %></td>
-                    <td><%= product.price %></td>
-                    <td><%= link_to "Ver", product_path(product), class: "button" %></td>
-                    <td><%= link_to "Agregar al carro", product_cart_path(product), class: "button", :method => :post %></td>
-                    <% if current_user && current_user.admin_role? %>
-                    <td><%= link_to "Editar", edit_product_path(product), class: "button"%></td>
-                    <td><%= link_to "Eliminar", product_path(product), data: { :confirm => "¿Estás seguro que deseas eliminar este producto?" }, :method => :delete, class: "button" %></td>
-                    <% end %>
-                </tr>
-                <% end %>
-            </tbody>
-            </table>
-            <% else %>
-                <h3>Aún no hay productos en el sistema.</h3>
+                </p>
+            </div>
             <% end %>
-        </div>
+        <% else %>
+            <h3>No hay productos en el sistema.</h3>
+        <% end %>
     </div>
+
     <% if current_user && current_user.admin_role? %>
     <div class="row">
         <div class="col-12">
