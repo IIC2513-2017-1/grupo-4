@@ -24,9 +24,9 @@
                         <td> <%= user.last_name %> </td>
                         <td> <%= user.email %> </td>
                         <td> <%= user.role %> </td>
-                        <td> <%= link_to "Ver usuario", user_path(user), class: "button"%> </td>
-                        <td> <%= link_to "Editar usuario", edit_user_path(user), class: "button"%> </td>
-                        <td> <%= link_to "Eliminar usuario", user_path(user), data: { :confirm => "¿Estás seguro que deseas eliminar el usuario?" }, :method => :delete, class: "button"%> </td>
+                        <td> <%= link_to fa_icon("search", text: "Ver usuario"), user_path(user), class: "button"%> </td>
+                        <td> <%= link_to fa_icon("edit", text: "Editar usuario"), edit_user_path(user), class: "button"%> </td>
+                        <td> <%= link_to fa_icon("trash", text: "Eliminar usuario"), user_path(user), data: { :confirm => "¿Estás seguro que deseas eliminar el usuario?" }, :method => :delete, class: "button"%> </td>
                     </tr>
                     <% end %>
                 </tbody>
@@ -38,7 +38,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <%= link_to "Crear usuario", new_user_path, class: "button" %>
+            <%= link_to fa_icon("plus", text: "Crear usuario"), new_user_path, class: "button" %>
         </div>
     </div>
 </div>

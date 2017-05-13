@@ -4,10 +4,10 @@
             <div class="col-12">
                 <ul>
                     <% if current_user && current_user.admin_role? %>
-                        <li><%= link_to "Usuarios", users_path, class: "button" %></li>
+                        <li><%= link_to fa_icon("user", text: "Usuarios"), users_path, class: "button" %></li>
                     <% end %>
-                    <li><%= link_to "Productos", products_path, class: "button" %></li>
-                    <li><%= link_to "Categorías", categories_path, class: "button" %></li>
+                    <li><%= link_to fa_icon("beer", text: "Productos"), products_path, class: "button" %></li>
+                    <li><%= link_to fa_icon("archive", text: "Categorías"), categories_path, class: "button" %></li>
                 </ul>
             </div>
         </div>
