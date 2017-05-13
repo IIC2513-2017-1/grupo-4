@@ -11,10 +11,8 @@
                 <li> <strong>Apellido: </strong> <%= @user.last_name %> </li>
                 <li> <strong>Email: </strong> <%= @user.email %> </li>
                 <li> <strong>Rol: </strong> <%= @user.role %> </li>
-                <li> <%= link_to "Editar usuario", edit_user_path(@user), class: "button"%> </li> 
-                <li> <%= link_to "Eliminar usuario", user_path(@user), data: { :confirm => "¿Estás seguro que deseas eliminar el usuario?" }, :method => :delete, class: "button"%></li>
-                
-            
+                <li> <%= link_to fa_icon("pencil", text: "Editar usuario"), edit_user_path(@user), class: "button"%> </li> 
+                <li> <%= link_to fa_icon("trash", text: "Eliminar usuario"), user_path(@user), data: { :confirm => "¿Estás seguro que deseas eliminar el usuario?" }, :method => :delete, class: "button"%></li>
             </ul>
         </div>        
     </div>
