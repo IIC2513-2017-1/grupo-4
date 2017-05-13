@@ -9,5 +9,9 @@ class Product < ApplicationRecord
     validates :sku, presence: true, uniqueness: true
     validates :name, presence: true
     validates :description, presence: true
+    validates :image, presence: true
     validates :price, presence: true, numericality: { greater_than: 0 }
+
+    # Montar uploader
+    mount_uploader :image, ProductImageUploader
 end
