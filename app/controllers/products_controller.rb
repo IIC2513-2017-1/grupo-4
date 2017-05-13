@@ -56,6 +56,7 @@ class ProductsController < ApplicationController
       :sku,
       :name,
       :description,
+      :image,
       :price,
       :category_id
     )
