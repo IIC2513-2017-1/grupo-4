@@ -12,14 +12,14 @@
                 <p class="text-center">
                     <%= link_to image_tag(product.image.url), product_path(product) %>
                     <strong>Precio:</strong> <%= product.price %> <br />
-                    <%= link_to "Ver producto", product_path(product), class: "button" %>
+                    <%= link_to fa_icon("search", text: "Ver producto"), product_path(product), class: "button" %>
                     <% if current_user %>
                         <br />
-                        <%= link_to "Agregar al carro", product_cart_path(product), class: "button", :method => :post %>
+                        <%= link_to fa_icon("cart-plus", text: "Agregar al carro"), product_cart_path(product), class: "button", :method => :post %>
                         <% if current_user.admin_role? %>
                             <br />
-                            <%= link_to "Editar producto", edit_product_path(product), class: "button" %> <br />
-                            <%= link_to "Eliminar producto", product_path(product), data: { :confirm => "¿Estás seguro que deseas eliminar este producto?" }, :method => :delete, class: "button" %>
+                            <%= link_to fa_icon("pencil", text: "Editar producto"), edit_product_path(product), class: "button" %> <br />
+                            <%= link_to fa_icon("trash", text: "Eliminar producto"), product_path(product), data: { :confirm => "¿Estás seguro que deseas eliminar este producto?" }, :method => :delete, class: "button" %>
                         <% end %>
                     <% end %>
                 </p>
@@ -33,7 +33,7 @@
     <% if current_user && current_user.admin_role? %>
     <div class="row">
         <div class="col-12">
-            <%= link_to "Crear producto", new_product_path, class: "button" %>
+            <%= link_to fa_icon("plus", text: "Crear producto"), new_product_path, class: "button" %>
         </div>
     </div>
     <% end %>
