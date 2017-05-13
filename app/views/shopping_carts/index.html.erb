@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1>Carro de compras</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <% if @shopping_cart.products.length > 0 %>
+                <table>
+                <thead>
+                    <tr>
+                        <th>SKU</th>
+                        <th>Categoría</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% @shopping_cart.products.group(:sku).count do |product, asf| %>
+                    <tr>
+                        <td><%= product.sku %></td>
+                        <td><%= product.category.name %></td>
+                        <td><%= product.name %></td>
+                        <td><%= product.price %></td>
+                        <td><%= link_to "Ver", product_path(product), class: "button" %></td>
+                        <td><%= link_to "Eliminar del carro", product_cart_path(product), data: { :confirm => "¿Estás seguro que deseas eliminar este producto del carro de compras?" }, :method => :delete, class: "button" %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+                </table>
+            <% else %>
+                <h3>No tienes productos en tu carro de compras.</h3>
+            <% end %>
+        </div>
+    </div>
+</div>

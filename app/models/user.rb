@@ -2,6 +2,9 @@ class User < ApplicationRecord
     # Manejar de la misma manera tEST@example.com y test@example.com
     before_save { self.email = email.downcase }
 
+    # Relaciones
+    has_one :shopping_cart
+
     # Declaración de roles
     enum role: { "admin" => 0, "user" => 1}, _suffix: true
     validates :role, presence: true
