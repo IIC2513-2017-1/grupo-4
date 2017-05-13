@@ -20,7 +20,7 @@
                 </thead>
 
                 <tbody>
-                    <% @shopping_cart.products.group(:sku).count do |product, asf| %>
+                    <% @shopping_cart.products.each do |product| %>
                     <tr>
                         <td><%= product.sku %></td>
                         <td><%= product.category.name %></td>
