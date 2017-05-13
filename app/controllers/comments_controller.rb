@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate
+  before_action :authorize_admin, only: [:destroy]
   before_action :set_comment, only: [:destroy]
 
   # POST /products/:id/comments
@@ -16,6 +18,8 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to @comment.product, notice: "El comentario fue eliminado correctamente."
   end
+
+  private
 
   def set_comment
     @comment = Comment.find(params[:id])
