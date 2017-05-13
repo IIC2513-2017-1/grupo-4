@@ -15,8 +15,10 @@
                     <th>Nombre</th>
                     <th>Precio</th>
                     <th></th>
+                    <% if current_user && current_user.admin_role? %>
                     <th></th>
                     <th></th>
+                    <% end %>
                 </tr>
             </thead>
 
@@ -28,8 +30,10 @@
                     <td><%= product.name %></td>
                     <td><%= product.price %></td>
                     <td><%= link_to "Ver", product_path(product), class: "button" %></td>
+                    <% if current_user && current_user.admin_role? %>
                     <td><%= link_to "Editar", edit_product_path(product), class: "button"%></td>
                     <td><%= link_to "Eliminar", product_path(product), data: { :confirm => "¿Estás seguro que deseas eliminar este producto?" }, :method => :delete, class: "button" %></td>
+                    <% end %>
                 </tr>
                 <% end %>
             </tbody>
@@ -39,9 +43,11 @@
             <% end %>
         </div>
     </div>
+    <% if current_user && current_user.admin_role? %>
     <div class="row">
         <div class="col-12">
             <%= link_to "Crear producto", new_product_path, class: "button" %>
         </div>
     </div>
+    <% end %>
 </div>
