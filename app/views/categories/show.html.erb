@@ -9,8 +9,10 @@
             <ul>
                 <li> <strong>Nombre: </strong> <%=@category.name %> </li>
                 <li> <strong>Descripcion: </strong> <%= @category.description %> </li>
+                <% if current_user && current_user.admin_role? %>
                 <li> <%= link_to "Editar categoria", edit_category_path(@category), class: "button"%> </li> 
                 <li> <%= link_to "Eliminar categoria", category_path(@category), data: { :confirm => "¿Estás seguro que deseas eliminar la categoría?" }, :method => :delete, class: "button"%> </li> 
+                <% end %>
                 
             
             </ul>
@@ -23,6 +25,7 @@
     </div>
     <div class="row">
         <div class="col-8">
+            <% if @category.products.length > 0%>
             <table>
             <thead>
                 <tr>
@@ -30,6 +33,11 @@
                 <th> Nombre </th>
                 <th> Descripcion</th>
                 <th> Precio </th>
+                <th></th>
+                <% if current_user && current_user.admin_role? %>
+                <th></th>
+                <th></th>
+                <% end %>
                 </tr>
             </thead>
 
@@ -41,12 +49,17 @@
                     <td> <%= product.description %> </td>
                     <td> <%= product.price %> </td>
                     <td> <%= link_to "Ver producto", product_path(product), class: "button"%> </td>
+                    <% if current_user && current_user.admin_role? %>
                     <td> <%= link_to "Editar producto", edit_product_path(product), class: "button"%> </td>
                     <td> <%= link_to "Eliminar producto", product_path(product), data: { :confirm => "¿Estás seguro que deseas eliminar el producto?" }, :method => :delete, class: "button"%> </td>
+                    <% end %>
                 </tr>
                 <% end %>
             </tbody>
             </table>
+            <% else %>
+                <h5>No hay productos en esta categoría.</h5>
+            <% end %>
         </div>
     </div>
 

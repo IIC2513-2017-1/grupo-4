@@ -12,6 +12,11 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Descripcion</th>
+                            <th></th>
+                            <% if current_user && current_user.admin_role? %>
+                            <th></th>
+                            <th></th>
+                            <% end %>
                         </tr>
                     </thead>
 
@@ -21,8 +26,10 @@
                                 <td> <%= category.name %> </td>
                                 <td> <%= category.description %> </td>
                                 <td> <%= link_to "Ver Categoria", category_path(category), class: "button"%> </td>
+                                <% if current_user && current_user.admin_role? %>
                                 <td> <%= link_to "Editar Categoria", edit_category_path(category), class: "button"%> </td>
                                 <td> <%= link_to "Eliminar categoria", category_path(category), data: { :confirm => "¿Estás seguro que deseas eliminar la categoría?" }, :method => :delete, class: "button"%> </td> 
+                                <% end %>
                             </tr>
                         <% end %>
                     </tbody>
@@ -32,9 +39,11 @@
             <% end %>
         </div>
     </div>
+    <% if current_user && current_user.admin_role? %>
     <div class="row">
         <div class="col-12">
             <%= link_to "Crear categoría", new_category_path, class: "button" %>
         </div>
     </div>
+    <% end %>
 </div>

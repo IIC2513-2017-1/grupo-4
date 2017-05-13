@@ -7,11 +7,15 @@
             <h5><strong>Precio:</strong> $<%= @product.price %> CLP</h5>
             <h5><strong>Categoría:</strong> <%= link_to @product.category.name, category_path(@product.category) %></h5>
         </div>
+        <% if current_user %>
         <div class="col-4">
+            <% if current_user.admin_role? %>
             <%= link_to "Editar", edit_product_path(@product), class: "button" %>
             <%= link_to "Eliminar", product_path(@product), data: { :confirm => "¿Estás seguro que deseas eliminar el producto?" }, :method => :delete, class: "button" %>
+            <% end %>
             <%= link_to "Agregar al carro", product_cart_path(@product), class: "button", :method => :post %>
         </div>
+        <% end %>
     </div>
     <div class="row">
         <div class="col-2">
