@@ -2,7 +2,7 @@ class ShoppingCartsController < ApplicationController
     # Usuario debe estar autenticado.
     before_action :authenticate
     before_action :set_shopping_cart
-    before_action :set_product, only: [:add]
+    before_action :set_product, only: [:add, :destroy]
 
     def add
         if @shopping_cart.products << @product
@@ -10,6 +10,11 @@ class ShoppingCartsController < ApplicationController
         else
             redirect_to @product, notice: "Producto no pudo ser agregado al carro de compras."
         end
+    end
+
+    def destroy
+        @shopping_cart.products.delete(@product)
+        redirect_to cart_url, notice: "Producto eliminado del carro de compras."
     end
 
     def index
