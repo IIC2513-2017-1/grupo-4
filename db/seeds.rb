@@ -7,19 +7,22 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Fake common users
+pass = "123"
 users_list = []
 for i in 0..9
     complete_name = Faker::StarWars.character
     name = complete_name.split(" ")[0]
     l_name = complete_name.split(" ")[1]    
-    pass = Faker::Internet.password(8)
-    user = User.create(email: Faker::Internet.free_email(name), first_name: name, last_name: l_name, role: 1, password: pass, password_confirmation: pass)
+    if l_name.nil?
+        l_name = "Doe"
+    end
+    email = Faker::Internet.email(name)
+    user = User.create!(email: email, first_name: name, last_name: l_name, role: 1, password: pass, password_confirmation: pass)
     users_list.insert(i, user)
 end
 
 # Fake admin user
-pass = Faker::Internet.password(8)
-User.create(email: "admin@admin.cl", first_name: "Mr", last_name: "Admin", role: 0, password: pass, password_confirmation: pass)
+User.create!(email: "admin@admin.cl", first_name: "Mr", last_name: "Admin", role: 0, password: pass, password_confirmation: pass)
 
 # Fake categories
 categories_list = [["Pisco", "El Pisco es un tipo de aguardiente de uvas que se produce en Chile y Perú"], ["Vodka", " El Vodka es una bebida destilada. Se discute el origen de la misma aunque el nombre actual es ruso. Se produce generalmente a través de la fermentación de granos y otras plantas ricas en almidón, como el centeno, trigo, o patata."],
@@ -31,7 +34,7 @@ categories_list = [["Pisco", "El Pisco es un tipo de aguardiente de uvas que se 
 
 categories = {}
 for i in 0..6
-    categories[categories_list[i][0]] = Category.create(name: categories_list[i][0], description: categories_list[i][1])
+    categories[categories_list[i][0]] = Category.create!(name: categories_list[i][0], description: categories_list[i][1])
 end
 
 # Fake products
@@ -43,12 +46,12 @@ products_list = [[0, "Alto del Carmen", "Pisco de 750cc y 35°", 3990, "alto.jpg
 
 products = []
 for i in 0..13
-    products.insert(i, Product.create(sku: products_list[i][0], name: products_list[i][1], description: products_list[i][2], price: products_list[i][3], category_id: categories[products_list[i][-1]].id, image: Rails.root.join("app/assets/images/"+ products_list[i][4]).open))
+    products.insert(i, Product.create!(sku: products_list[i][0], name: products_list[i][1], description: products_list[i][2], price: products_list[i][3], category_id: categories[products_list[i][-1]].id, image: Rails.root.join("app/assets/images/"+ products_list[i][4]).open))
 end
 
 # Fake comments
 for i in 0..13
     for k in 0..2
-        Comment.create(body: Faker::StarWars.quote, user_id: users_list.sample.id, product_id: products[i].id)
+        Comment.create!(body: Faker::StarWars.quote, user_id: users_list.sample.id, product_id: products[i].id)
     end
 end
