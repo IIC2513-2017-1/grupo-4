@@ -17,3 +17,13 @@ directamente en la base de datos (estableciendo restricciones mediante migracion
 - Se implementaron las relaciones entre productos y categorías en los modelos.
 - El landing page es estático (el jumbotron no cambia y las categorías de abajo tampoco), no obstante, no era el objetivo
 de esta entrega y se presentó para dar una idea de cómo vemos la aplicación en el corto plazo.
+
+## Entrega 3
+Detalles sobre la entrega 3:
+
+- Se implementó el sistema de comentarios para cada producto y que estos solo puedan ser agregados por un usuario que hace log in.
+- Se implementó el uso de seeds para llenar de productos, usuarios y comentarios la pagina. Se hizo uso de Faker para generar algunos datos.
+- Se implementó el sistema para subir imagenes utilizando carrierwave.
+- Se implementó con manejo de sesiones los permisos y vistas que pueden ver los usuarios dependiendo del rol.
+- Se implementó el carro de compras.
+- El login encriptado fue implementado en la entrega pasada.
