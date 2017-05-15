@@ -8,6 +8,7 @@ end
 gem 'simple_form'
 gem 'enum_help'
 gem 'carrierwave', '~> 1.0'
+gem 'faker'
 gem 'font-awesome-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
