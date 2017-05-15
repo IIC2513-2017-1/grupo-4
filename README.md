@@ -27,3 +27,4 @@ Detalles sobre la entrega 3:
 - Se implementó con manejo de sesiones los permisos y vistas que pueden ver los usuarios dependiendo del rol.
 - Se implementó el carro de compras.
 - El login encriptado fue implementado en la entrega pasada.
+- Se implementaron iconos utilizando font awesome
