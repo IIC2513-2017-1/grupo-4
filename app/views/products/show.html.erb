@@ -40,7 +40,7 @@
                 <tbody>
                     <% @comments.each do |comment| %>
                     <tr class="comments-table">
-                        <td><%= comment.user.first_name%></td>
+                        <td><%= comment.user.first_name + " " + comment.user.last_name%></td>
                         <td><%= comment.created_at %></td>
                         <td><%= comment.id %></td>
                         <td><%= @product.id %></td>                    
