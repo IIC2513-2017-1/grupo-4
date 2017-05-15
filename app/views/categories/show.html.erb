@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <h1>Detalle de la categoria</h1>
+            <h3>Detalle de la categoria</h3>
         </div>
     </div>
     <div class="row">
@@ -10,42 +10,17 @@
                 <li> <strong>Nombre: </strong> <%=@category.name %> </li>
                 <li> <strong>Descripcion: </strong> <%= @category.description %> </li>
                 <% if current_user && current_user.admin_role? %>
-                <li> <%= link_to "Editar categoria", edit_category_path(@category), class: "button"%> </li> 
-                <li> <%= link_to "Eliminar categoria", category_path(@category), data: { :confirm => "¿Estás seguro que deseas eliminar la categoría?" }, :method => :delete, class: "button"%> </li> 
+                <li> <%= link_to fa_icon("pencil", text: "Editar categoria"), edit_category_path(@category), class: "button"%> </li> 
+                <li> <%= link_to fa_icon("trash", text: "Eliminar categoria"), category_path(@category), data: { :confirm => "¿Estás seguro que deseas eliminar la categoría?" }, :method => :delete, class: "button"%> </li> 
                 <% end %>
-                
-            
             </ul>
         </div>        
     </div>
+    <hr />
     <div class="row">
         <div class="col-6">
-            <h4>Productos</h4>
+            <h3>Productos</h3>
         </div>
     </div>
-    <div class="row">
-        <% if @category.products.length > 0 %>
-            <% @category.products.each do |product| %>
-            <div class="featured-product col-2">
-                <h4><%= link_to product.name, product_path(product) %></h4>
-                <p class="text-center">
-                    <%= link_to image_tag(product.image.url), product_path(product) %>
-                    <strong>Precio:</strong> <%= product.price %> <br />
-                    <%= link_to "Ver producto", product_path(product), class: "button" %>
-                    <% if current_user %>
-                        <br />
-                        <%= link_to "Agregar al carro", product_cart_path(product), class: "button", :method => :post %>
-                        <% if current_user.admin_role? %>
-                            <br />
-                            <%= link_to "Editar producto", edit_product_path(product), class: "button" %> <br />
-                            <%= link_to "Eliminar producto", product_path(product), data: { :confirm => "¿Estás seguro que deseas eliminar este producto?" }, :method => :delete, class: "button" %>
-                        <% end %>
-                    <% end %>
-                </p>
-            </div>
-            <% end %>
-        <% else %>
-            <h3>No hay productos en el sistema.</h3>
-        <% end %>
-    </div>
+    <%= render "products/product_list", products: @category.products %>
 </div>

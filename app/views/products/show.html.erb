@@ -10,16 +10,16 @@
         <% if current_user %>
         <div class="col-4">
             <% if current_user.admin_role? %>
-            <%= link_to "Editar", edit_product_path(@product), class: "button" %>
-            <%= link_to "Eliminar", product_path(@product), data: { :confirm => "¿Estás seguro que deseas eliminar el producto?" }, :method => :delete, class: "button" %>
+            <%= link_to fa_icon("pencil", text: "Editar"), edit_product_path(@product), class: "button" %>
+            <%= link_to fa_icon("trash", text: "Eliminar"), product_path(@product), data: { :confirm => "¿Estás seguro que deseas eliminar el producto?" }, :method => :delete, class: "button" %>
             <% end %>
-            <%= link_to "Agregar al carro", product_cart_path(@product), class: "button", :method => :post %>
+            <%= link_to fa_icon("cart-plus", text: "Agregar al carro"), product_cart_path(@product), class: "button", :method => :post %>
         </div>
         <% end %>
     </div>
     <div class="row">
         <div class="col-2">
-            <%= image_tag @product.image.url, :class => "image-margin" %>
+            <%= image_tag @product.image.url, :class => "product-image image-margin" %>
         </div>
         <div class="col-10">
             <p class="text-margin">                 
@@ -27,15 +27,15 @@
             </p>
         </div>        
     </div>
-    <br>
-    <br>
+    <hr />
     <div class="row">
-        <div col-4>
+        <div class="col-4">
             <h4>Comentarios</h4>
         </div>
     </div>
     <div class="row">
-        <div col-8>
+        <div class="col-8">
+        <% if @comments.length > 0 %>
             <table>
                 <tbody>
                     <% @comments.each do |comment| %>
@@ -44,7 +44,9 @@
                         <td><%= comment.created_at %></td>
                         <td><%= comment.id %></td>
                         <td><%= @product.id %></td>                    
-                        <td><%= link_to "Eliminar", product_comment_path(@product, comment), data: { :confirm => "¿Estás seguro que deseas eliminar este comentario?" }, :method => :delete, class: "button" %></td>
+                        <% if current_user && current_user.admin_role? %>
+                        <td><%= link_to fa_icon("trash", text: "Eliminar"), product_comment_path(@product, comment), data: { :confirm => "¿Estás seguro que deseas eliminar este comentario?" }, :method => :delete, class: "button" %></td>
+                        <% end %>
                     </tr>
                     <tr>                        
                         <td><%= comment.body %></td>                        
@@ -52,12 +54,17 @@
                     <% end %>
                 </tbody>
             </table>
+        <% else %>
+            <h4>Aún no hay comentarios.</h4>
+        <% end %>
         </div>
     </div>
+    <% if current_user %>
     <br>
     <div class="row">
         <div class="col-10">
             <%= render "comment_form", comment: @comment %>
         </div>
     </div>
+    <% end %>
 </div>
