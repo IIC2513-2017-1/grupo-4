@@ -25,16 +25,16 @@ end
 User.create!(email: "admin@admin.cl", first_name: "Mr", last_name: "Admin", role: 0, password: pass, password_confirmation: pass)
 
 # Fake categories
-categories_list = [["Pisco", "El Pisco es un tipo de aguardiente de uvas que se produce en Chile y Perú"], ["Vodka", " El Vodka es una bebida destilada. Se discute el origen de la misma aunque el nombre actual es ruso. Se produce generalmente a través de la fermentación de granos y otras plantas ricas en almidón, como el centeno, trigo, o patata."],
-                   ["Ron", "El ron es una bebida alcohólica, elaborada a partir de la caña de azúcar por fermentación, y que posteriormente puede o no estar sometido a procesos de añejamiento, generalmente en barricas de roble. Esta bebida se menciona por primera vez en documentos provenientes de Barbados en 1650."],
-                   ["Tequila", "El tequila es un destilado originario del municipio de Tequila en el estado de Jalisco, México. Se elabora a partir de la fermentación y destilado al igual que el mezcal, jugo extraído del agave, en particular el llamado agave azul "],
-                   ["Vino","El vino es una bebida obtenida de la uva mediante la fermentación alcohólica de su mosto o zumo.2 La fermentación se produce por la acción metabólica de levaduras, que transforman los azúcares del fruto en etanol y el gas en forma de dióxido de carbono."],
-                   ["Cerveza", "La cerveza es una bebida alcohólica, no destilada, de sabor amargo, que se fábrica con granos de cebada germinados u otros cereales cuyo almidón se fermenta en agua con levadura y se aromatiza a menudo con lúpulo, entre otras planta"],
-                   ["Whisky", "El whisky es una bebida alcohólica obtenida por la destilación de la malta fermentada de cereales como cebada, trigo, centeno y maíz, y su posterior envejecimiento en barriles de madera, tradicionalmente de roble blanco."]]
+categories_list = [["Pisco", "El Pisco es un tipo de aguardiente de uvas que se produce en Chile y Perú", "piscola.jpg"], ["Vodka", " El Vodka es una bebida destilada. Se discute el origen de la misma aunque el nombre actual es ruso. Se produce generalmente a través de la fermentación de granos y otras plantas ricas en almidón, como el centeno, trigo, o patata.", "martini.jpg"],
+                   ["Ron", "El ron es una bebida alcohólica, elaborada a partir de la caña de azúcar por fermentación, y que posteriormente puede o no estar sometido a procesos de añejamiento, generalmente en barricas de roble. Esta bebida se menciona por primera vez en documentos provenientes de Barbados en 1650.", "daiquiri.jpg"],
+                   ["Tequila", "El tequila es un destilado originario del municipio de Tequila en el estado de Jalisco, México. Se elabora a partir de la fermentación y destilado al igual que el mezcal, jugo extraído del agave, en particular el llamado agave azul","sunrise.jpg"],
+                   ["Vino","El vino es una bebida obtenida de la uva mediante la fermentación alcohólica de su mosto o zumo.2 La fermentación se produce por la acción metabólica de levaduras, que transforman los azúcares del fruto en etanol y el gas en forma de dióxido de carbono.","tinto.jpg"],
+                   ["Cerveza", "La cerveza es una bebida alcohólica, no destilada, de sabor amargo, que se fábrica con granos de cebada germinados u otros cereales cuyo almidón se fermenta en agua con levadura.", "beer.jpg"],
+                   ["Whisky", "El whisky es una bebida alcohólica obtenida por la destilación de la malta fermentada de cereales como cebada, trigo, centeno y maíz, y su posterior envejecimiento en barriles de madera, tradicionalmente de roble blanco.", "rocks.jpg"]]
 
 categories = {}
 for i in 0..6
-    categories[categories_list[i][0]] = Category.create!(name: categories_list[i][0], description: categories_list[i][1])
+    categories[categories_list[i][0]] = Category.create!(name: categories_list[i][0], description: categories_list[i][1], image: categories_list[i][2])
 end
 
 # Fake products

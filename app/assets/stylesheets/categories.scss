@@ -1,3 +1,25 @@
 // Place all the styles related to the Categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.category-row {
+    margin-top: 3rem;
+    display: flex;
+    background-color: #F5F5F5;
+    border-radius: 7px;
+ }
+
+.category-image-container  {
+    flex: 1;
+}
+
+.category-image {
+    border-radius: 7px;
+    box-sizing: border-box;
+    width: 80%;
+}
+
+.category-description {    
+    margin-left: 2rem;
+    flex: 1;   
+}
