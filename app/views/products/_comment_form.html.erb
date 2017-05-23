@@ -1,4 +1,5 @@
-<%= simple_form_for [@product, @comment] do |f| %> 
-    <%= f.text_area :body, :cols => "40", :rows => "8" %>
+<%= simple_form_for [@product, @comment], remote: true, html: {id: "new_link"} do |f| %> 
+    <%= f.text_area :body, :cols => "40", :rows => "8", text_area_html: {:class => "comment_text_area   "} %>
     <%= f.button :submit %>
 <% end %>
+

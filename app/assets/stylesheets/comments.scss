@@ -1,7 +1,37 @@
+
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-tr.comments-table td {
-    padding-top: 40px;
+.comment-container {
+    background-color: #F5F5F5;
+    padding: 1rem;
+    border-radius: 7px;
+    margin-bottom: 2rem;    
 }
+
+.comment-user {
+    font-weight: 800;
+    flex: 1;
+}
+
+.comment-date {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.comment-body {
+    margin: 2rem 0;
+    font-style: italic;
+}
+
+.row {
+    display: flex;
+}
+
+.trash-button {
+    color: red;
+    margin: 0 10px;
+}
+
