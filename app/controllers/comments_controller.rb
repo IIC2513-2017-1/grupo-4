@@ -21,7 +21,10 @@ class CommentsController < ApplicationController
   # DELETE /products/:id/comments/:id
   def destroy
     @comment.destroy
-    redirect_to @comment.product, notice: "El comentario fue eliminado correctamente."
+    respond_to do |format|
+      format.html {redirect_to @comment.product, notice: "El comentario fue eliminado correctamente."}
+      format.js
+    end
   end
 
   private

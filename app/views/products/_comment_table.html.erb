@@ -6,7 +6,7 @@
             <div class="comment-date">
                 <%= comment.created_at %>
                 <% if current_user && current_user.admin_role? %>
-                <%= link_to fa_icon("trash"), product_comment_path(product, comment), data: { :confirm => "¿Estás seguro que deseas eliminar este comentario?" }, :method => :delete, class: "trash-button" %>
+                    <%= link_to fa_icon("trash"), product_comment_path(product, comment), remote: true, data: { :confirm => "¿Estás seguro que deseas eliminar este comentario?" }, :method => :delete, class: "trash-button" %>
                 <% end %>
             </div>
         </div>
