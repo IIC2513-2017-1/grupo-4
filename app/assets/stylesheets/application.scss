@@ -21,7 +21,7 @@
 @import "globals";
 
 body {
-    background: $light-brown;
+    background: white;
 }
 
 #nav-header {
@@ -83,6 +83,7 @@ footer {
 }
 
 .site-nav-ul {
+    -webkit-font-smoothing:antialiased;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -92,6 +93,7 @@ footer {
 
 .site-nav-li {
     float: left;
+
 }
 
 .site-nav-li a, .dropbtn {
@@ -100,6 +102,7 @@ footer {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+
 }
 
 .site-nav-li a:hover, .dropdown:hover .dropbtn {
@@ -110,6 +113,7 @@ footer {
 
 .site-nav-li.dropdown {
     display: inline-block;
+
 }
 
 .dropdown-content {
@@ -129,13 +133,16 @@ footer {
     text-decoration: none;
     display: block;
     text-align: left;
+
 }
 
 .dropdown-content a:hover {
     background-color: $dark-black;
     border-radius: 0; 
+
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
+
 }
