@@ -8,7 +8,7 @@
                         <li class="site-nav-li"><%= link_to fa_icon("user", text: "Usuarios"), users_path %></li>
                     <% end %>
                     <li class="site-nav-li dropdown">
-                        <%= link_to fa_icon("archive", text: "Categorías"),"#", class: "dropbtn" %>
+                        <%= link_to fa_icon("archive", text: "Categorías"), categories_path, class: "dropbtn" %>
                         <div class="dropdown-content">
                             <% categories.each do |category| %>
                                 <%= link_to category.name, category_path(category)%>
