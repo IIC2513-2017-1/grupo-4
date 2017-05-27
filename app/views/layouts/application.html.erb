@@ -10,7 +10,7 @@
 
   <body>
     <%= render "layouts/navbar" %>
-    <%= render "layouts/site_navigation" %>
+    <%= render "layouts/site_navigation", categories: categories %>
     <%= render "layouts/notice", notice: notice %>
     <%= render "layouts/alert", alert: alert %>
     <%= yield %>

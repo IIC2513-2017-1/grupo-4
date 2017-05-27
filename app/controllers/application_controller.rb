@@ -14,4 +14,9 @@ class ApplicationController < ActionController::Base
   def authorize_admin
     redirect_to "/login" unless current_user && current_user.admin_role?
   end
+
+  def categories
+    @categories ||= Category.all
+  end
+  helper_method :categories
 end

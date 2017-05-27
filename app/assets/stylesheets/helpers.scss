@@ -24,6 +24,10 @@ strong {
     color: white;
 }
 
+.button:hover {
+    background-color: $hover-button;
+}
+
 .product-image {
     width: 100%;
 }
