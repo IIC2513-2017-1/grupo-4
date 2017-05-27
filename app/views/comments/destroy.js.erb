@@ -1,2 +1,2 @@
 $('#<%= @comment.product.id %>').html
-("<%=j render :partial => 'products/comment_table',:locals => {:product => @comment.product, :comments => @comment.product.comments} %>");
+("<%=j render :partial => 'products/comment_table', :locals => {:product => @comment.product, :comments => @comment.product.comments} %>");
