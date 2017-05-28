@@ -24,5 +24,5 @@ Rails.application.routes.draw do
   end
   
   # Root route
-  root "static_pages#home"
+  root "home#index"
 end

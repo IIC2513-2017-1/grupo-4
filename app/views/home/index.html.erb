@@ -1,21 +1,25 @@
+<% if @jumbotron_products.length > 0 %>
 <section id="landing-jumbotron">
     <div class="container">
         <div class="row">
+            <% @jumbotron_products.each do |product| %>
             <div class="col-12">
                 <div class="text-box">
-                    <h3>Fireball</h3>
+                    <h3><%= product.name %></h3>
                     <p>
-                        Fireball, el shot Nº 1 de USA llegó a Chile. Fuego puro embotellado sabor canela que vino a 
-                        quemar tu garganta y prender tus carretes como nunca antes. <br />
+                        <%= product.description %><br />
                     </p>
                     <p>
-                        <strong>Precio:</strong> $10.390 <br />
-                        <a class="button" href="#">Ver detalles</a> <a class="button" href="#">Agregar a Carro</a>
+                        <strong>Precio:</strong> <%= number_to_currency(product.price) %><br />
+                        <%= link_to fa_icon("search", text: "Ver detalles"), product_path(product), class: "button" %>
+                        <%= link_to fa_icon("cart-plus", text: "Agregar a carro"), product_cart_path(product), class: "button", :method => :post %>
                 </div>
             </div>
+            <% end %>
         </div>
     </div>
 </section>
+<% end %>
 
 <div class="featured-container container">
     <div class="row">
