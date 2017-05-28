@@ -4,7 +4,7 @@
             <h1>Productos</h1>
         </div>
     </div>
-    <%= render "product_list", products: @products %>
+    <%= render "product_list", products: @products, is_transaction: false %>
     <% if current_user && current_user.admin_role? %>
     <div class="row">
         <div class="col-12">

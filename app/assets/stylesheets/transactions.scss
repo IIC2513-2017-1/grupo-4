@@ -1,0 +1,21 @@
+// Place all the styles related to the transactions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.transaction-container {
+    background-color: #F5F5F5;
+    padding: 1rem;
+    border-radius: 7px;
+    margin-bottom: 2rem;    
+}
+
+.transaction-name {
+    font-weight: 800;
+    flex: 1;
+    font-size: 2.5rem;
+}
+
+.transaction-date {
+    flex: 1;
+    display: flex;
+}

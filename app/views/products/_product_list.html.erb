@@ -6,14 +6,18 @@
             <p class="text-center">
                 <%= link_to image_tag(product.image.url), product_path(product) %>
                 <strong>Precio:</strong> <%= product.price %> <br />
-                <%= link_to fa_icon("search", text: "Ver producto"), product_path(product), class: "button" %>
+                <% if !(is_transaction) %>
+                    <%= link_to fa_icon("search", text: "Ver producto"), product_path(product), class: "button" %>
+                <% end %>
                 <% if current_user %>
                     <br />
-                    <%= link_to fa_icon("cart-plus", text: "Agregar al carro"), product_cart_path(product), class: "button", :method => :post %>
-                    <% if current_user.admin_role? %>
-                        <br />
-                        <%= link_to fa_icon("pencil", text: "Editar producto"), edit_product_path(product), class: "button" %> <br />
-                        <%= link_to fa_icon("trash", text: "Eliminar producto"), product_path(product), data: { :confirm => "¿Estás seguro que deseas eliminar este producto?" }, :method => :delete, class: "button" %>
+                    <% if !(is_transaction)%>
+                        <%= link_to fa_icon("cart-plus", text: "Agregar al carro"), product_cart_path(product), class: "button", :method => :post %>
+                        <% if current_user.admin_role? %>
+                            <br />
+                            <%= link_to fa_icon("pencil", text: "Editar producto"), edit_product_path(product), class: "button" %> <br />
+                            <%= link_to fa_icon("trash", text: "Eliminar producto"), product_path(product), data: { :confirm => "¿Estás seguro que deseas eliminar este producto?" }, :method => :delete, class: "button" %>
+                        <% end %>
                     <% end %>
                 <% end %>
             </p>

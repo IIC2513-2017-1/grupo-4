@@ -27,10 +27,30 @@ class ShoppingCartsController < ApplicationController
     end
 
     def set_shopping_cart
-        if current_user.shopping_cart.nil?
-            @shopping_cart = current_user.create_shopping_cart
-        else
-            @shopping_cart = current_user.shopping_cart
+        def has_active_cart(cart)
+            cart.each do |s_cart|
+                if !(s_cart.reserved)
+                    return true
+                end
+            end     
+            return false 
         end
-    end
+
+        def get_id(array)
+            array.each do |cart|
+                if !(cart.reserved)
+                    return cart.id                    
+                end
+            end
+        end
+
+        cart_array = current_user.shopping_carts.to_ary()
+        if has_active_cart(cart_array)            
+            not_reserved_cart_id = get_id(cart_array)
+            @shopping_cart = current_user.shopping_carts.find(not_reserved_cart_id)
+        else
+            @shopping_cart = current_user.shopping_carts.create!( attributes = {reserved: false, user_id: current_user.id})
+        end
+
+    end     
 end

@@ -6,7 +6,8 @@ class User < ApplicationRecord
     before_save { self.email = email.downcase }
 
     # Relaciones
-    has_one :shopping_cart
+    has_many :shopping_carts
+    has_many :transactions
 
     # Declaración de roles
     enum role: { "admin" => 0, "user" => 1}, _suffix: true
