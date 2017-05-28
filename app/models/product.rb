@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+    after_initialize :set_default_values
+
     # Relaciones
     belongs_to :category
     validates :category, presence: true
@@ -13,10 +15,13 @@ class Product < ApplicationRecord
     validates :description, presence: true
     validates :image, presence: true
     validates :price, presence: true, numericality: { greater_than: 0 }
-    validates :jumbotron, presence: true
     validates :jumbotron_image, presence: true, if: :jumbotron?
 
     # Montar uploader
     mount_uploader :image, ProductImageUploader
     mount_uploader :jumbotron_image, JumbotronImageUploader
+
+    def set_default_values
+        self.jumbotron ||= false
+    end
 end

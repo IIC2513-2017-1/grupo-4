@@ -8,7 +8,7 @@ class UserMailer < ApplicationMailer
 
     def create_transaction_email(user, transaction)
         @user = user
-        @shopping_cart = shopping_cart
         @transaction = transaction
         mail to: user.email, subject: "Nueva reserva en iCopete"
+    end
 end
