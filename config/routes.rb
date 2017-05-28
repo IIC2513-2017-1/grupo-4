@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   resources :products do 
     resources :comments, only: [:create, :destroy]
   end
+
+  # Transactions routes
+  resources :transactions
   
   # Root route
   root "static_pages#home"
