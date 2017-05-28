@@ -2,7 +2,7 @@
     <div class="row">
         <h1 class="text-margin"><%= @product.name %></h1>
     </div>
-    <div class="row">
+    <div class="row" id="first-row">
         <div class="col-2">
             <h5><strong>Precio:</strong> $<%= @product.price %> CLP</h5>
             <h5><strong>Categoría:</strong> <%= link_to @product.category.name, category_path(@product.category) %></h5>
@@ -13,7 +13,7 @@
                 <%= link_to fa_icon("pencil", text: "Editar"), edit_product_path(@product), class: "button" %>
                 <%= link_to fa_icon("trash", text: "Eliminar"), product_path(@product), data: { :confirm => "¿Estás seguro que deseas eliminar el producto?" }, :method => :delete, class: "button" %>
             <% end %>
-            <%= link_to fa_icon("cart-plus", text: "Agregar al carro"), product_cart_path(@product), class: "button", :method => :post %>
+            <%= link_to fa_icon("cart-plus", text: "Agregar al carro"), product_cart_path(@product), class: "button", :method => :post, remote: true %>
         </div>
         <% end %>
     </div>
@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-8">
+        <div class="col-8" id="comment-space">
         <% if @comments.length > 0 %>
             <%= render "comment_table", product: @product, comments: @comments%>
         <% else %>
