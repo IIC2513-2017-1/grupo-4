@@ -1,0 +1,11 @@
+<h1>Bienvenido a iCopete</h1>
+
+<p>
+    Hola <%= @user.first_name %> <%= @user.last_name %>,
+    <br />
+    Se ha creado exitosamente tu nueva cuenta en iCopete. Para empezar a
+    reservar productos ingresa haciendo click en el <%= link_to "siguiente enlace", login_url %>. 
+    (<%= login_url %>).
+    <br />
+    ¡Gracias por elegir nuestro servicio!
+</p>

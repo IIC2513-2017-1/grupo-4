@@ -11,12 +11,11 @@ class UsersController < ApplicationController
   def signup_create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to "/login", notice: "Usuario creado exitosamente."}
-      else
-        format.html { render :signup_new }
-      end
+    if @user.save
+      UserMailer.signup_email(@user).deliver_later
+      redirect_to "/login", notice: "Usuario creado exitosamente."
+    else
+      render :signup_new
     end
   end
   
