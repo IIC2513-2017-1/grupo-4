@@ -60,7 +60,9 @@ class ProductsController < ApplicationController
       :description,
       :image,
       :price,
-      :category_id
+      :category_id,
+      :jumbotron,
+      :jumbotron_image
     )
   end
 end

@@ -1,21 +1,35 @@
+<% if @jumbotron_products.length > 0 %>
 <section id="landing-jumbotron">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="text-box">
-                    <h3>Fireball</h3>
-                    <p>
-                        Fireball, el shot Nº 1 de USA llegó a Chile. Fuego puro embotellado sabor canela que vino a 
-                        quemar tu garganta y prender tus carretes como nunca antes. <br />
-                    </p>
-                    <p>
-                        <strong>Precio:</strong> $10.390 <br />
-                        <a class="button" href="#">Ver detalles</a> <a class="button" href="#">Agregar a Carro</a>
+                <div class="jumbotron-ui" id="jumbotron-left-ui">
+                    <span><%= fa_icon "chevron-left 2x" %></span>
+                </div>
+                <div id="jumbotron-mask">
+                    <% @jumbotron_products.each do |product| %>
+                    <div class="jumbotron-element" style="background-image: url('<%= product.jumbotron_image.url %>');">
+                        <div class="text-box">
+                            <h3><%= product.name %></h3>
+                            <p>
+                                <%= product.description %><br />
+                            </p>
+                            <p>
+                                <strong>Precio:</strong> <%= number_to_currency(product.price) %><br />
+                                <%= link_to fa_icon("search", text: "Ver detalles"), product_path(product), class: "button" %>
+                                <%= link_to fa_icon("cart-plus", text: "Agregar a carro"), product_cart_path(product), class: "button", :method => :post %>
+                        </div>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="jumbotron-ui" id="jumbotron-right-ui">
+                    <span><%= fa_icon "chevron-right 2x" %></span>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<% end %>
 
 <div class="featured-container container">
     <div class="row">

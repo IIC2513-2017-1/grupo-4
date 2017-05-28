@@ -13,7 +13,10 @@ class Product < ApplicationRecord
     validates :description, presence: true
     validates :image, presence: true
     validates :price, presence: true, numericality: { greater_than: 0 }
+    validates :jumbotron, presence: true
+    validates :jumbotron_image, presence: true, if: :jumbotron?
 
     # Montar uploader
     mount_uploader :image, ProductImageUploader
+    mount_uploader :jumbotron_image, JumbotronImageUploader
 end
