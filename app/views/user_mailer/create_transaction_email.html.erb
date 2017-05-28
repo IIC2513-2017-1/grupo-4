@@ -1,0 +1,10 @@
+<h1>Nueva transacción en iCopete</h1>
+
+<p>
+    Estimad@ <%= @user.first_name %> <%= @user.last_name %>, <br />
+    Hemos registrado una nueva reserva de productos en nuestro sistema.
+    Puedes ver los detalles en el <%= link_to "siguiente enlace", transaction_url(transaction) %>
+    (<%= transaction_url(transaction) %>). <br />
+    Saludos, <br />
+    iCopete.
+</p>
