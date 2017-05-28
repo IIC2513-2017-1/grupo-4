@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <% if current_user.transactions.length > 0 %>
+                <h1 class="h1-margin"> Todas mis transacciones </h1>
+            <% else %>
+                <h1 class="h1-margin"> No hay transacciones </h1>
+            <% end %>
+            <br>
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-8">            
+            <% current_user.transactions.each do |transaction|%>
+                <div class="transaction-container">
+                    <div class="transaction-name">
+                        <%= "Transaccion numero "+ (transaction.id).to_s %>
+                    </div>
+                    <div class="transaction-date">                        
+                        <%= "Fecha de la transacción: " + (transaction.created_at).to_s %>
+                    </div>
+                    <div class="transaction-cost<">
+                        <%= "Precio total transacción: " + (transaction.shopping_cart.products.sum(:price)).to_s %>
+                    </div>
+                    <div class="transaction-show">
+                        <%= link_to fa_icon("plus", text: "Ver transaccion"), transaction_path(transaction), class: "button" %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

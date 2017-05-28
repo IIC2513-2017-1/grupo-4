@@ -1,1 +1,21 @@
-<h1>YOlo</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1 class="h1-margin"> Transaccion </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div>
+                <%= render :partial => 'products/product_list', :locals => {products: @transaction.shopping_cart.products, is_transaction: true} %>                
+            </div>
+            <div>
+                <hr>
+                <br>
+                <h4>Total a pagar: <%= number_to_currency(@transaction.shopping_cart.products.sum(:price)) %></h4>
+            </div>
+        </div>
+    </div>
+</div>
+

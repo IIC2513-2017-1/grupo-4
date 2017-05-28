@@ -1,4 +1,6 @@
 class TransactionsController < ApplicationController
+  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+
     def create
         @transaction = Transaction.new(transaction_params)
         if @transaction.save
@@ -10,6 +12,13 @@ class TransactionsController < ApplicationController
         end
     end
 
+  def index
+    @transactions = Transaction.all
+  end
+
+  def set_transaction
+    @transaction = Transaction.find(params[:id])
+  end
 
   def transaction_params
     params.permit(
