@@ -34,7 +34,7 @@ categories_list = [["Pisco", "El Pisco es un tipo de aguardiente de uvas que se 
 
 categories = {}
 for i in 0..6
-    categories[categories_list[i][0]] = Category.create!(name: categories_list[i][0], description: categories_list[i][1], image: categories_list[i][2])
+    categories[categories_list[i][0]] = Category.create!(name: categories_list[i][0], description: categories_list[i][1], image: Rails.root.join("app/assets/images/" + categories_list[i][2]).open)
 end
 
 # Fake products
@@ -46,7 +46,7 @@ products_list = [[0, "Alto del Carmen", "Pisco de 750cc y 35°", 3990, "alto.jpg
 
 products = []
 for i in 0..13
-    products.insert(i, Product.create!(sku: products_list[i][0], name: products_list[i][1], description: products_list[i][2], price: products_list[i][3], category_id: categories[products_list[i][-1]].id, image: Rails.root.join("app/assets/images/"+ products_list[i][4]).open))
+    products.insert(i, Product.create!(sku: products_list[i][0], name: products_list[i][1], description: products_list[i][2], price: products_list[i][3], category_id: categories[products_list[i][-1]].id, image: Rails.root.join("app/assets/images/" + products_list[i][4]).open))
 end
 
 # Fake comments
