@@ -2,20 +2,30 @@
 <section id="landing-jumbotron">
     <div class="container">
         <div class="row">
-            <% @jumbotron_products.each do |product| %>
             <div class="col-12">
-                <div class="text-box">
-                    <h3><%= product.name %></h3>
-                    <p>
-                        <%= product.description %><br />
-                    </p>
-                    <p>
-                        <strong>Precio:</strong> <%= number_to_currency(product.price) %><br />
-                        <%= link_to fa_icon("search", text: "Ver detalles"), product_path(product), class: "button" %>
-                        <%= link_to fa_icon("cart-plus", text: "Agregar a carro"), product_cart_path(product), class: "button", :method => :post %>
+                <div class="jumbotron-ui" id="jumbotron-left-ui">
+                    <span><%= fa_icon "chevron-left 2x" %></span>
+                </div>
+                <div id="jumbotron-mask">
+                    <% @jumbotron_products.each do |product| %>
+                    <div class="jumbotron-element" style="background-image: url('<%= product.jumbotron_image.url %>');">
+                        <div class="text-box">
+                            <h3><%= product.name %></h3>
+                            <p>
+                                <%= product.description %><br />
+                            </p>
+                            <p>
+                                <strong>Precio:</strong> <%= number_to_currency(product.price) %><br />
+                                <%= link_to fa_icon("search", text: "Ver detalles"), product_path(product), class: "button" %>
+                                <%= link_to fa_icon("cart-plus", text: "Agregar a carro"), product_cart_path(product), class: "button", :method => :post %>
+                        </div>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="jumbotron-ui" id="jumbotron-right-ui">
+                    <span><%= fa_icon "chevron-right 2x" %></span>
                 </div>
             </div>
-            <% end %>
         </div>
     </div>
 </section>
