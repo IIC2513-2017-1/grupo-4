@@ -7,6 +7,7 @@ class TransactionsController < ApplicationController
           # Set shopping_cart reserved a true
           @transaction.shopping_cart.update(reserved: true)    
           # Crear nuevo shopping cart
+          UserMailer.create_transaction_email(current_user, @transaction).deliver_later
           current_user.shopping_carts.create!( attributes = {reserved: false, user_id: current_user.id})
           redirect_to @transaction, notice: "Transaccion creada exitosamente."
         end
