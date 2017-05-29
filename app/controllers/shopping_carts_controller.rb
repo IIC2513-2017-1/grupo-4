@@ -16,8 +16,12 @@ class ShoppingCartsController < ApplicationController
     end
 
     def destroy
-        @shopping_cart.products.delete(@product)
-        redirect_to cart_url, notice: "Producto eliminado del carro de compras."
+        respond_to do |format|
+            if @shopping_cart.products.delete(@product)
+                format.html {redirect_to cart_url, notice: "Producto eliminado del carro de compras."}
+                format.js
+            end
+        end
     end
 
     def index

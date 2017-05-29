@@ -1,3 +1,15 @@
 var content = $("<%=j render :partial => 'layouts/notice', :locals => {:notice => "Producto agregado exitosamente a carro de compras."}%>");
 $('#site-navigation').after(content);
 content.delay(1500).slideUp();
+<%
+def get_id(array)
+    array.each do |cart|
+        if !(cart.reserved)
+            return cart.id                    
+        end
+    end
+end
+%>
+
+$('.cart-counter').text("Carro de compras " + <%= current_user.shopping_carts.find(get_id(current_user.shopping_carts.to_a)).products.count.to_s%>);
+

@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-8">
+        <div class="col-8" id="cart-products-list">
             <% if @shopping_cart.products.length > 0 %>
                 <table>
                 <thead>
@@ -27,7 +27,7 @@
                         <td><%= product.name %></td>
                         <td><%= product.price %></td>
                         <td><%= link_to fa_icon("search", text: "Ver"), product_path(product), class: "button" %></td>
-                        <td><%= link_to fa_icon("trash", text: "Eliminar del carro"), product_cart_path(product), data: { :confirm => "¿Estás seguro que deseas eliminar este producto del carro de compras?" }, :method => :delete, class: "button" %></td>
+                        <td><%= link_to fa_icon("trash", text: "Eliminar del carro"), product_cart_path(product), data: { :confirm => "¿Estás seguro que deseas eliminar este producto del carro de compras?" }, remote: true, :method => :delete, class: "button" %></td>
                     </tr>
                     <% end %>
                 </tbody>
