@@ -20,7 +20,7 @@
                         <%= "Fecha de la transacción: " + (transaction.created_at).to_s %>
                     </div>
                     <div class="transaction-cost<">
-                        <%= "Precio total transacción: " + (transaction.shopping_cart.products.sum(:price)).to_s %>
+                        <%= "Precio total transacción: " + number_to_currency(transaction.shopping_cart.products.sum(:price)).to_s %>
                     </div>
                     <div class="transaction-show">
                         <%= link_to fa_icon("plus", text: "Ver transaccion"), transaction_path(transaction), class: "button" %>

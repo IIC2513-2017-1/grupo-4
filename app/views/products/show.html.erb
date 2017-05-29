@@ -1,19 +1,10 @@
-<<<<<<< Updated upstream
  <div class="container">
-=======
-<%= render "layouts/navbar" %>
-
-<div class="container">
-    <div class="row">
-        <h1 class="text-margin">Jack Daniels Old No.7</h1>
-    </div>
->>>>>>> Stashed changes
     <div class="row">
         <h1 class="text-margin"><%= @product.name %></h1>
     </div>
     <div class="row" id="first-row">
         <div class="col-2">
-            <h5><strong>Precio:</strong> $<%= @product.price %> CLP</h5>
+            <h5><strong>Precio:</strong> <%= number_to_currency(@product.price) %></h5>
             <h5><strong>Categoría:</strong> <%= link_to @product.category.name, category_path(@product.category) %></h5>
         </div>
         <% if current_user %>

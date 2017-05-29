@@ -19,7 +19,12 @@
                 <% if current_user %>
                     <li>Hola, <%= current_user.first_name %>!</li>
                     <li><%= link_to fa_icon("sign-out", text: "Desconectarse"), "/logout", class: "button" %></li>
-                    <li><%= link_to fa_icon("shopping-cart", text: "Carro de compras (#{shopping_cart_number})"), "/cart", class: "button cart-counter" %></li>
+                    <li>
+                        <%= link_to "/cart", class: "button cart-counter" do %>
+                            <%= fa_icon("shopping-cart") %>
+                            Carro de compras (<span id="shopping-cart-number"><%= shopping_cart_number %></span>)
+                        <% end %>
+                    </li>
                     <li><%= link_to fa_icon("beer", text: "Transacciones"), "/transactions", class: "button" %></li>
                 <% else %>
                     <li><%= link_to fa_icon("user-plus", text: "Registrarse"), "/signup", class: "button" %></li>
