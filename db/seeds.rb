@@ -55,3 +55,16 @@ for i in 0..13
         Comment.create!(body: Faker::StarWars.quote, user_id: users_list.sample.id, product_id: products[i].id)
     end
 end
+
+
+# Fake Transactions
+
+users_list.each do |user|
+    for i in 0..2
+        cart = ShoppingCart.create!(user_id: user.id)        
+        for k in 0..3
+            ShoppingCartProduct.create!(shopping_cart_id: cart.id, product_id: products.sample.id)        
+        end
+        Transaction.create!(user_id: user.id, shopping_cart_id: cart.id)      
+    end
+end
