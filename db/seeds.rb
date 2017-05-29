@@ -49,6 +49,29 @@ for i in 0..13
     products.insert(i, Product.create!(sku: products_list[i][0], name: products_list[i][1], description: products_list[i][2], price: products_list[i][3], category_id: categories[products_list[i][-1]].id, image: Rails.root.join("app/assets/images/" + products_list[i][4]).open))
 end
 
+fireball = Product.create!(
+    sku: 14,
+    name: "Fireball",
+    description: "Fireball, el shot Nº 1 de USA llegó a Chile. Fuego puro embotellado sabor canela que vino a quemar tu garganta y prender tus carretes como nunca antes.",
+    price: 10990,
+    image: Rails.root.join("app/assets/images/fireball.jpg").open,
+    category_id: categories["Whisky"].id,
+    jumbotron: true,
+    jumbotron_image: Rails.root.join("app/assets/images/fireball-jumbotron.jpg").open
+)
+products.insert(14, fireball)
+stolichnaya = Product.create!(
+    sku: 15,
+    name: "Stolichnaya",
+    description: "Stolíchnaya es una marca de vodka producido en Moscú. Se obtiene a partir de granos del trigo y centeno de Tambov, una ciudad situada en la región de tierra negra de Rusia.",
+    price: 13990,
+    image: Rails.root.join("app/assets/images/stolichnaya.jpeg").open,
+    category_id: categories["Vodka"].id,
+    jumbotron: true,
+    jumbotron_image: Rails.root.join("app/assets/images/stolichnaya-jumbotron.jpg").open
+)
+products.insert(15, fireball)
+
 # Fake comments
 for i in 0..13
     for k in 0..2

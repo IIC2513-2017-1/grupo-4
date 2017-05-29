@@ -19,4 +19,12 @@ class ApplicationController < ActionController::Base
     @categories ||= Category.all
   end
   helper_method :categories
+
+  def shopping_cart_number
+    if @current_user.shopping_carts.last.nil?
+      @current_user.shopping_carts.create!
+    end
+    @shopping_cart_number = @current_user.shopping_carts.last.products.count.to_s
+  end
+  helper_method :shopping_cart_number
 end

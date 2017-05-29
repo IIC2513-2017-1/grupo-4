@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+  before_action :authenticate
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
 
     def create
@@ -14,7 +15,11 @@ class TransactionsController < ApplicationController
     end
 
   def index
-    @transactions = Transaction.all
+    if current_user.admin_role?
+      @transactions = Transaction.all
+    else
+      @transactions = current_user.transactions
+    end
   end
 
   def set_transaction
