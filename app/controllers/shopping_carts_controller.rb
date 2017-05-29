@@ -5,10 +5,13 @@ class ShoppingCartsController < ApplicationController
     before_action :set_product, only: [:add, :destroy]
 
     def add
-        if @shopping_cart.products << @product
-            redirect_to @product, notice: "Producto agregado exitosamente a carro de compras."
-        else
-            redirect_to @product, notice: "Producto no pudo ser agregado al carro de compras."
+        respond_to do |format|
+            if @shopping_cart.products << @product
+                format.html {redirect_to @product, notice: "Producto agregado exitosamente a carro de compras."}
+                format.js
+            else
+                format.html {redirect_to @product, notice: "Producto no pudo ser agregado al carro de compras."}
+            end
         end
     end
 

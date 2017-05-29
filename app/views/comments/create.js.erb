@@ -1,3 +1,3 @@
-$('#<%= @comment.product.id %>').html
-("<%=j render :partial => 'products/comment_table', :locals => {:product => @comment.product, :comments => @comment.product.comments} %>");
+var content = "<%=j render :partial => 'products/comment_table',:locals => {:product => @comment.product, :comments => @comment.product.comments} %>";
+$('#comment-space').html(content);
 $('#new_comment').trigger("reset");
