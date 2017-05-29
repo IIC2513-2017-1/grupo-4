@@ -2,12 +2,21 @@ Rails.application.routes.draw do
   # Users routes
   resources :users
 
+<<<<<<< Updated upstream
   # Authentication
   get "/signup", to: "users#signup_new"
   post "/signup", to: "users#signup_create"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
+=======
+  # User routes
+  resources :users, except: :new
+  get "/signup", to: "users#new"
+  get "/login", to: "users#login"
+  resources :categories
+  get 'products/show'
+>>>>>>> Stashed changes
 
   # Categories routes
   resources :categories
