@@ -1,0 +1,1 @@
+$('.cart-counter').text("Carro de compras " + <%= current_user.shopping_carts.find(get_id(current_user.shopping_carts.to_a)).products.count.to_s%>);
