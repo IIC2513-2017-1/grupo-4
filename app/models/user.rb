@@ -1,13 +1,13 @@
 class User < ApplicationRecord
     # Relaciones 
-    has_many :comments
+    has_many :comments, :dependent => :delete_all
     
     # Manejar de la misma manera tEST@example.com y test@example.com
     before_save { self.email = email.downcase }
 
     # Relaciones
-    has_many :shopping_carts
-    has_many :transactions
+    has_many :transactions, :dependent => :delete_all
+    has_many :shopping_carts, :dependent => :delete_all
 
     # Declaración de roles
     enum role: { "admin" => 0, "user" => 1}, _suffix: true

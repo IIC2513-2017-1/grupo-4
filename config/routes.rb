@@ -27,5 +27,5 @@ Rails.application.routes.draw do
   resources :transactions
   
   # Root route
-  root "static_pages#home"
+  root "home#index"
 end
