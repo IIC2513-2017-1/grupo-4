@@ -24,4 +24,7 @@ class User < ApplicationRecord
     # Contraseñas
     has_secure_password
     validates :password, presence: true
+
+    # Avatar
+    mount_uploader :avatar, UserAvatarUploader
 end

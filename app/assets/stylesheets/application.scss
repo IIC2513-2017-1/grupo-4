@@ -33,6 +33,11 @@ body {
         justify-content: space-between;
     }
 
+    .small-avatar {
+        width: 40px;
+        vertical-align: middle;
+    }
+
     .text-replacement {
         background: image-url("logo-white.png") no-repeat;
         background-size: contain;
@@ -100,7 +105,7 @@ footer {
     display: inline-block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 5px 10px;
     text-decoration: none;
 
 }
