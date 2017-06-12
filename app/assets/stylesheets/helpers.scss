@@ -11,7 +11,7 @@
     color: transparent;
 }
 
-strong {
+.text-strong, strong {
     font-weight: bold;
 }
 
@@ -30,4 +30,12 @@ strong {
 
 .product-image {
     width: 100%;
+}
+
+.text-warning {
+    color: #8a6d3b;
+}
+
+.text-success {
+    color: #3c763d;
 }

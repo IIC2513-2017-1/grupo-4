@@ -15,7 +15,6 @@
                     <%return 0%>
                 <%end%>
 
-
                 <% if current_user %>
                     <li><%= image_tag current_user.avatar.url, class: "small-avatar" %> Hola, <%= current_user.first_name %>!</li>
                     <li><%= link_to fa_icon("sign-out", text: "Desconectarse"), "/logout", class: "button" %></li>
@@ -25,7 +24,11 @@
                             Carro de compras (<span id="shopping-cart-number"><%= shopping_cart_number %></span>)
                         <% end %>
                     </li>
-                    <li><%= link_to fa_icon("beer", text: "Transacciones"), "/transactions", class: "button" %></li>
+                    <% if current_user.admin_role? %>
+                        <li><%= link_to fa_icon("tachometer", text: "Dashboard"), "/dashboard", class: "button" %></li>
+                    <% else %>
+                        <li><%= link_to fa_icon("user", text: "Mi perfil"), "/profile", class: "button" %></li>
+                    <% end %>
                 <% else %>
                     <li><%= link_to fa_icon("user-plus", text: "Registrarse"), "/signup", class: "button" %></li>
                     <li><%= link_to fa_icon("sign-in", text: "Ingresar"), "/login", class: "button" %></li>
