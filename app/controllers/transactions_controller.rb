@@ -43,7 +43,11 @@ class TransactionsController < ApplicationController
       @temp_cart.products << product
     end
     @temp_transaction = Transaction.new(shopping_cart_id: @temp_cart.id, user_id: current_user.id)
-    @temp_transaction.save    
+    if transaction.save
+      redirect_to transaction, notice: "Transacción marcada como despachada exitosamente."
+    else
+      redirect_to transaction, alert: "Ocurrió un error marcando la transacción como despachada."
+    end   
   end
 
   def transaction_params
