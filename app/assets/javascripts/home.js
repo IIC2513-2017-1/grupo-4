@@ -1,4 +1,4 @@
-$(function() {
+$(document).on("turbolinks:load", function() {
 	var widget = $("#landing-jumbotron"),
 		rotador = $("#landing-jumbotron .col-12"),
         mask = $("#jumbotron-mask"),
@@ -103,5 +103,13 @@ $(function() {
 		timer = setTimeout(function() { functions.loopDaSlide() }, time);
 		widget.data("locked", false);
 	});
-	
+
+	$("#navbar-small-avatar").click(function(e) {
+		$("#navbar-dropdown-menu").toggle();
+		e.stopPropagation();
+	});
+
+	$(document).click(function() {
+		$("#navbar-dropdown-menu").hide();
+	});
 });

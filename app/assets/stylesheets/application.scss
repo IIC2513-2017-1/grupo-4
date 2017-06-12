@@ -35,7 +35,12 @@ body {
 
     .small-avatar {
         width: 40px;
-        vertical-align: middle;
+        border-radius: 50%;
+        border: 1px solid white;
+    }
+
+    .small-avatar:hover {
+        border: 1px solid grey;
     }
 
     .text-replacement {
@@ -51,6 +56,66 @@ body {
 
     ul li {
         display: inline-block;
+    }
+}
+
+.dropdown-controls > img {
+    cursor: pointer;
+}
+
+.dropdown-controls {
+    position: relative;
+    z-index: 1;
+
+    .dropdown-menu {
+        position: absolute;
+        right: 0;
+        background: white;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+        padding: 10px 0;
+        border-radius: 4px;
+        display: none;
+
+        .dropdown-caret {
+            width: 0; 
+            height: 0; 
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid white;
+            position: absolute;
+            top: -5px;
+            right: 17px;
+        }
+
+        li {
+            display: block !important;
+            color: #66757f;
+        }
+
+        li > a, li > .dropdown-link {
+            color: #66757f;
+            cursor: pointer;
+            line-height: 20px;
+            padding: 5px 20px;
+            white-space: nowrap;
+            display: block;
+            text-decoration: none;
+        }
+
+        li > a:hover, li > .dropdown-link:hover {
+            background: $dark-red;
+            color: white;
+        }
+
+        .dropdown-divider {
+            border-bottom: 1px solid #e6ecf0;
+            margin: 5px 1px 6px;
+            padding-top: 1px;
+        }
+
+        .metadata {
+            display: block;
+        }
     }
 }
 
@@ -149,5 +214,4 @@ footer {
 
 .dropdown:hover .dropdown-content {
     display: block;
-
 }
