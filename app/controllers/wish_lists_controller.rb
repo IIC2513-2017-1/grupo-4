@@ -1,6 +1,7 @@
 class WishListsController < ApplicationController    
     before_action :set_wish_list
     before_action :set_product, only: [:add, :destroy]
+    before_action :set_user
 
     def add
         respond_to do |format|
@@ -43,6 +44,10 @@ class WishListsController < ApplicationController
         else
             @wish_list = User.find(params[:user_id]).wish_list
         end
+    end
+
+    def set_user
+        @user = User.find(params[:user_id])
     end
 
 end
