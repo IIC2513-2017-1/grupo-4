@@ -1,19 +1,30 @@
-
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <h1 class="h1-margin"> Transaccion </h1>
+            <h2>Transacción</h2>
         </div>
     </div>
     <div class="row">
         <div class="col-8">
             <div>
+                <h3>Productos</h3>
                 <%= render :partial => 'products/product_list', :locals => {products: @transaction.shopping_cart.products, is_transaction: true} %>                
             </div>
             <div>
                 <hr>
-                <br>
+                <h3>Detalles</h3>
+                <h4>Número de transacción: <%= @transaction.id %></h4>
                 <h4>Total a pagar: <%= number_to_currency(@transaction.shopping_cart.products.sum(:price)) %></h4>
+                <h4>Estado: 
+                    <% if @transaction.dispatched %>
+                        <span class="text-success">despachada</span>.
+                    <% else %>
+                        <span class="text-warning">en proceso de despacho</span>.
+                    <% end %>
+                </h4>
+                <% if !@transaction.dispatched and current_user.admin_role? %>
+                    <%= link_to fa_icon("check", text: "Marcar como despachada"), transaction_dispatch_path(@transaction), class: "button", :method => :post %>
+                <% end %>
             </div>
         </div>
     </div>
