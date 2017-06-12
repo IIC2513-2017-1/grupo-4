@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # User routes
   resources :users, except: :new do 
     get "/wishlist", to: "wish_lists#index"
+    post "/wishlist", to: "transactions#wishlist_transaction"
   end
   get "/signup", to: "users#new"
   get "/login", to: "users#login"
@@ -36,7 +37,7 @@ Rails.application.routes.draw do
 
   # Transactions routes
   resources :transactions do
-    post "/dispatch", to: "transactions#dispatch_"
+    post "/dispatch", to: "transactions#dispatch_"  
   end
 
   # Dashboard
