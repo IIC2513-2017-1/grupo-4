@@ -36,6 +36,16 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
   end
 
+  def wishlist_transaction
+    @temp_cart = ShoppingCart.new(user_id: current_user.id, reserved: true)
+    @temp_cart.save
+    current_user.wish_list.products.each do |product|
+      @temp_cart.products << product
+    end
+    @temp_transaction = Transaction.new(shopping_cart_id: @temp_cart.id, user_id: current_user.id)
+    @temp_transaction.save    
+  end
+
   def transaction_params
     params.permit(
       :shopping_cart_id,
