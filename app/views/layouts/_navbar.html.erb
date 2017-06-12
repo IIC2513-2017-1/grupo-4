@@ -57,10 +57,10 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                            <%= link_to user_wishlist_path(current_user) do %>
                                 <%= fa_icon "gift" %>
                                 Wishlist
-                            </a>
+                            <% end %>
                         </li>
 
                         <li class="dropdown-divider" role="presentation"></li>
