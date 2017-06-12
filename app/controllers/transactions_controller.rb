@@ -43,10 +43,10 @@ class TransactionsController < ApplicationController
       @temp_cart.products << product
     end
     @temp_transaction = Transaction.new(shopping_cart_id: @temp_cart.id, user_id: current_user.id)
-    if transaction.save
-      redirect_to transaction, notice: "Transacción creada exitosamente."
+    if @temp_transaction.save
+      redirect_to @temp_transaction, notice: "Transacción creada exitosamente."
     else
-      redirect_to transaction, alert: "Ocurrió un error creando la transaccion."
+      redirect_to @temp_transaction, alert: "Ocurrió un error creando la transaccion."
     end   
   end
 
