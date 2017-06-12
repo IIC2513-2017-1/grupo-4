@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   resources :categories
   get 'products/show'
 
-
   # Categories routes
   resources :categories
 
@@ -36,9 +35,12 @@ Rails.application.routes.draw do
   end
 
   # Transactions routes
-  resources :transactions
+  resources :transactions do
+    post "/dispatch", to: "transactions#dispatch_"
+  end
 
-  
+  # Dashboard
+  get "/dashboard", to: "dashboards#index"
   
   # Root route
   root "home#index"

@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <h1>Dashboard</h1>
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-8">            
+            <h3>Transacciones no despachadas</h3>
+            <%= render "transactions/transaction_list", transactions: @transactions_not_dispatched %>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-8">            
+            <h3>Transacciones despachadas</h3>
+            <%= render "transactions/transaction_list", transactions: @transactions_dispatched %>
+        </div>
+    </div>
+</div>
