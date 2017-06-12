@@ -13,7 +13,8 @@
                 <%= link_to fa_icon("pencil", text: "Editar"), edit_product_path(@product), class: "button" %>
                 <%= link_to fa_icon("trash", text: "Eliminar"), product_path(@product), data: { :confirm => "¿Estás seguro que deseas eliminar el producto?" }, :method => :delete, class: "button" %>
             <% end %>
-            <%= link_to fa_icon("cart-plus", text: "Agregar al carro"), product_cart_path(@product), class: "button", :method => :post, remote: true %>
+            <%= link_to fa_icon("cart-plus", text: "Agregar al carro"), product_cart_path(@product), class: "button", :method => :post, remote: true %> 
+            <%= link_to fa_icon("plus", text: "Wishlist"), product_wishlist_path(@product), class: "button", :method => :post %>
         </div>
         <% end %>
     </div>

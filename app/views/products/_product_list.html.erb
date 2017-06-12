@@ -12,7 +12,8 @@
                 <% if current_user %>
                     <br />
                     <% if !(is_transaction)%>
-                        <%= link_to fa_icon("cart-plus", text: "Agregar al carro"), product_cart_path(product), class: "button", remote: true, :method => :post %>
+                        <%= link_to fa_icon("cart-plus", text: "Agregar al carro"), product_cart_path(product), class: "button", remote: true, :method => :post %> <br />
+                        <%= link_to fa_icon("plus", text: "Wishlist"), product_wishlist_path(product), class: "button", :method => :post %>
                         <% if current_user.admin_role? %>
                             <br />
                             <%= link_to fa_icon("pencil", text: "Editar producto"), edit_product_path(product), class: "button" %> <br />

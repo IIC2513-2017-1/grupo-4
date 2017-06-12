@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wish_list: one
+  product: one
+
+two:
+  wish_list: two
+  product: two
