@@ -42,6 +42,9 @@ Rails.application.routes.draw do
 
   # Dashboard
   get "/dashboard", to: "dashboards#index"
+
+  # profile
+  get "/profile", to: "profiles#index"
   
   # Root route
   root "home#index"
