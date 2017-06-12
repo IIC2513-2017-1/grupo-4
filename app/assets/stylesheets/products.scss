@@ -11,3 +11,10 @@
     margin-top: 1cm;
 }
 
+.featured-product {
+    transition: all .25s ease-in-out;
+}
+
+.featured-product:hover {
+    transform: scale(1.025);
+}
