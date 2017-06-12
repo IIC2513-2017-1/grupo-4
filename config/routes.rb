@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   get "/logout", to: "sessions#destroy"
 
   # User routes
-  resources :users, except: :new
+  resources :users, except: :new do 
+    get "/wishlist", to: "wish_lists#index"
+  end
   get "/signup", to: "users#new"
   get "/login", to: "users#login"
   resources :categories
@@ -23,8 +25,10 @@ Rails.application.routes.draw do
   resources :products do
     post "/cart", to: "shopping_carts#add"
     delete "/cart", to: "shopping_carts#destroy"
+    post "/wishlist", to: "wish_lists#add"    
+    delete "/wishlist", to: "wish_lists#destroy"
   end
-  get "/cart", to: "shopping_carts#index"
+  get "/cart", to: "shopping_carts#index"  
 
   resources :products do 
     resources :comments, only: [:create, :destroy]

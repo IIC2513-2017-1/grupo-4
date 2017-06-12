@@ -7,6 +7,8 @@ class Product < ApplicationRecord
     has_many :shopping_cart_products, dependent: :destroy
     has_many :shopping_carts, through: :shopping_cart_products
     has_many :comments, dependent: :destroy
+    has_many :wish_list_products, dependent: :destroy
+    has_many :wish_lists, through: :wish_list_products    
 
     # Validaciones de Rails
     validates :category, presence: true

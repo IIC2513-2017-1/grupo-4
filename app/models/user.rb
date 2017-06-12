@@ -8,6 +8,7 @@ class User < ApplicationRecord
     # Relaciones
     has_many :transactions, :dependent => :delete_all
     has_many :shopping_carts, :dependent => :delete_all
+    has_one :wish_list
 
     # Declaración de roles
     enum role: { "admin" => 0, "user" => 1}, _suffix: true

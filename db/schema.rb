@@ -87,6 +87,22 @@ ActiveRecord::Schema.define(version: 20170611233233) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  create_table "wish_list_products", force: :cascade do |t|
+    t.integer  "wish_list_id"
+    t.integer  "product_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["product_id"], name: "index_wish_list_products_on_product_id", using: :btree
+    t.index ["wish_list_id"], name: "index_wish_list_products_on_wish_list_id", using: :btree
+  end
+
+  create_table "wish_lists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_wish_lists_on_user_id", using: :btree
+  end
+
   add_foreign_key "comments", "products"
   add_foreign_key "comments", "users"
   add_foreign_key "products", "categories"
@@ -95,4 +111,7 @@ ActiveRecord::Schema.define(version: 20170611233233) do
   add_foreign_key "shopping_carts", "users"
   add_foreign_key "transactions", "shopping_carts"
   add_foreign_key "transactions", "users"
+  add_foreign_key "wish_list_products", "products"
+  add_foreign_key "wish_list_products", "wish_lists"
+  add_foreign_key "wish_lists", "users"
 end
