@@ -7,17 +7,17 @@
                 <%= link_to image_tag(product.image.url), product_path(product) %>
                 <strong>Precio:</strong> <%= number_to_currency(product.price) %> <br />
                 <% if !(is_transaction) %>
-                    <%= link_to fa_icon("search", text: "Ver producto"), product_path(product), class: "button" %>
+                    <%= link_to fa_icon("search", text: "Ver"), product_path(product), class: "button" %>
                 <% end %>
                 <% if current_user %>
                     <br />
                     <% if !(is_transaction)%>
-                        <%= link_to fa_icon("cart-plus", text: "Agregar al carro"), product_cart_path(product), class: "button", remote: true, :method => :post %> <br />
-                        <%= link_to fa_icon("gift", text: "Agregar a wishlist"), product_wishlist_path(product), class: "button", :method => :post %>
+                        <%= link_to fa_icon("cart-plus", text: "Carro"), product_cart_path(product), class: "button", remote: true, :method => :post %> <br />
+                        <%= link_to fa_icon("gift", text: "Wishlist"), product_wishlist_path(product), class: "button", :method => :post %>
                         <% if current_user.admin_role? %>
                             <br />
-                            <%= link_to fa_icon("pencil", text: "Editar producto"), edit_product_path(product), class: "button" %> <br />
-                            <%= link_to fa_icon("trash", text: "Eliminar producto"), product_path(product), data: { :confirm => "¿Estás seguro que deseas eliminar este producto?" }, :method => :delete, class: "button" %>
+                            <%= link_to fa_icon("pencil", text: "Editar"), edit_product_path(product), class: "button" %> <br />
+                            <%= link_to fa_icon("trash", text: "Eliminar"), product_path(product), data: { :confirm => "¿Estás seguro que deseas eliminar este producto?" }, :method => :delete, class: "button" %>
                         <% end %>
                     <% end %>
                 <% end %>
