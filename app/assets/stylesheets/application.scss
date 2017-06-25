@@ -16,6 +16,9 @@
  //= require_self
  //= require_tree .
  //= require font-awesome
+ /*
+ *= require jquery-ui/autocomplete
+ */
 
 
 @import "globals";
@@ -214,4 +217,24 @@ footer {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+#autocomplete-li {
+    float: right;
+}
+
+#autocomplete-li i {
+    color: white;
+}
+
+#autocomplete-input {
+    margin-top: 5px;
+    border-radius: 3px;
+    width: 200px;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.ui-menu-item {
+    cursor: pointer;
 }

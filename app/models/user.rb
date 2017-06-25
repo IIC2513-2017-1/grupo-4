@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     # Relaciones 
     has_many :comments, :dependent => :delete_all
+    has_many :user_keys, :dependent => :delete_all
     
     # Manejar de la misma manera tEST@example.com y test@example.com
     before_save { self.email = email.downcase }
