@@ -45,6 +45,7 @@ Rails.application.routes.draw do
 
   # profile
   get "/profile", to: "profiles#index"
+  get "/profile/edit", to: "profiles#edit"
   
   # Root route
   root "home#index"

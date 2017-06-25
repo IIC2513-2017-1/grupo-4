@@ -1,0 +1,21 @@
+<% if transactions.length > 0%>
+    <% for i in 0..2 %>
+        <div class="transaction-container">
+            <div class="transaction-name">
+                <%= "Transacción #" + (transactions[i].id).to_s %>
+            </div>
+            <div class="transaction-date">                        
+                <%= "Fecha de la transacción: " + (transactions[i].created_at).to_s %>
+            </div>
+            <div class="transaction-cost">
+                <%= "Precio total transacción: " + number_to_currency(transactions[i].shopping_cart.products.sum(:price)).to_s %>
+            </div>
+
+            <div class="transaction-show">
+                <%= link_to fa_icon("search", text: "Ver transaccion"), transaction_path(transactions[i]), class: "button" %>
+            </div>
+        </div>
+    <% end %>
+<% else %>
+    <h3>No hay transacciones.</h3>
+<% end %>
