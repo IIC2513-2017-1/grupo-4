@@ -23,14 +23,21 @@ $(document).on("turbolinks:load", function() {
         }
     });
 
+    array_nombres = [];
+    array_datos = [];
+
+    for (i = 0; i < cntx.data('a').length; i++) { 
+        array_nombres.push(cntx.data('a')[i][0]);
+        array_datos.push(cntx.data('a')[i][1]);
+    }
+    console.log(array_nombres);
+
     var barchar = new Chart(cntx, {
         type: 'bar',
         data: {
             datasets: [{
                 label: "Numero de Copetes Vendidos",
-                data: [cntx.data('a'),cntx.data('b'),cntx.data('c'),cntx.data('d'),cntx.data('e'),cntx.data('f'),cntx.data('g'),cntx.data('h'),cntx.data('i'),
-                       cntx.data('j'),cntx.data('k'),cntx.data('l'),cntx.data('m'),cntx.data('n'),cntx.data('o'),cntx.data('p')],
-
+                data: array_datos,
                 backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -53,27 +60,27 @@ $(document).on("turbolinks:load", function() {
 
 
             // These labels appear in the legend and in the tooltips when hovering different arcs
-            labels: [
-                'Alto del Carmen',
-                'Mistral',
-                'Absolute',
-                'Smirnoff',
-                'Ron Flor de Caña',
-                'Bacardi Gold',
-                'Olmeca Blanco',
-                'Tequila Sierra',
-                'Santa Helena',
-                'Concha y Toro',
-                'Heineken',
-                'Cristal',
-                'Johnnie Walker',
-                'Jack Daniels',
-                'Fireball',
-                'Stolichnaya'
-            ]
-        }
-    });
+            labels: array_nombres
+        },
 
+        options: {
+            scales: {
+                xAxes: [{
+                    stacked: false,
+                    beginAtZero: true,
+                    scaleLabel: {
+                        labelString: 'Month'
+                    },
+                    ticks: {
+                        stepSize: 1,
+                        min: 0,
+                        autoSkip: false
+                    }
+                }]
+            }
+        }
+
+    });
 
 
 
