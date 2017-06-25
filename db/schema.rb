@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170611233233) do
+ActiveRecord::Schema.define(version: 20170625044320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,14 @@ ActiveRecord::Schema.define(version: 20170611233233) do
     t.index ["user_id"], name: "index_transactions_on_user_id", using: :btree
   end
 
+  create_table "user_keys", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_keys_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "first_name"
@@ -111,6 +119,7 @@ ActiveRecord::Schema.define(version: 20170611233233) do
   add_foreign_key "shopping_carts", "users"
   add_foreign_key "transactions", "shopping_carts"
   add_foreign_key "transactions", "users"
+  add_foreign_key "user_keys", "users"
   add_foreign_key "wish_list_products", "products"
   add_foreign_key "wish_list_products", "wish_lists"
   add_foreign_key "wish_lists", "users"
