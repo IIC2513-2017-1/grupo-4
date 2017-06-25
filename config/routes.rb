@@ -45,6 +45,8 @@ Rails.application.routes.draw do
 
   # profile
   get "/profile", to: "profiles#index"
+  get "/profile/edit", to: "profiles#edit"
+
 
   # Application Programming Interface (API)
   namespace :api do
@@ -53,6 +55,7 @@ Rails.application.routes.draw do
       resources :products, only: [:index, :create, :show, :update, :destroy]
     end
   end
+
   
   # Root route
   root "home#index"

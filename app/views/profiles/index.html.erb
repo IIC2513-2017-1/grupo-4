@@ -1,7 +1,26 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <h1><%= current_user.first_name %></h1>
+            <h1><%= current_user.first_name %>  <%= current_user.last_name %> <%= link_to fa_icon("pencil"), profile_edit_path(current_user) %> </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">            
+            <%= image_tag current_user.avatar.url, :class => "user-image" %> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <%= link_to fa_icon("star", text: "Wishlist"), user_wishlist_path(current_user), class: "button"%>
+            <%= link_to fa_icon("star", text: "Todas las Transacciones"), "/transactions", class: "button"%>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <hr>
+            <br>
+            <%= render "first_transactions", transactions: @transactions %>            
         </div>
     </div>
 </div>
