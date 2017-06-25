@@ -2,7 +2,7 @@ require 'httparty'
 
 class AlgoliaApi
     include HTTParty
-    base_uri "https://#{Rails.application.secrets.algolia_application_id}-dsn.algolia.net"
+    base_uri "https://#{Rails.application.secrets.algolia_application_id}.algolia.net"
 
     def initialize
         @options = {

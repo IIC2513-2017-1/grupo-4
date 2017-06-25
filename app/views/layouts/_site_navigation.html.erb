@@ -17,6 +17,10 @@
                     </li>
                     <li class="site-nav-li"><%= link_to fa_icon("beer", text: "Productos"), products_path %></li>
                     <li class="site-nav-li"> <%= link_to fa_icon("info-circle", text: "Contacto"), "#" %></li>
+                    <li id="autocomplete-li">
+                        <%= fa_icon "search" %>
+                        <input id="autocomplete-input" type="text" />
+                    </li>
                 </ul>                
             </div>
         </div>
