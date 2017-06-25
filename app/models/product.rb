@@ -1,5 +1,8 @@
 class Product < ApplicationRecord
     after_initialize :set_default_values
+    after_create :post_algolia_product
+    after_update :patch_algolia_product
+    after_destroy :destroy_algolia_product
 
     # Relaciones
     belongs_to :category
@@ -23,7 +26,21 @@ class Product < ApplicationRecord
     mount_uploader :image, ProductImageUploader
     mount_uploader :jumbotron_image, JumbotronImageUploader
 
+    private
+
     def set_default_values
         self.jumbotron ||= false
+    end
+
+    def post_algolia_product
+        AlgoliaPostProductJob.perform_later self
+    end
+
+    def patch_algolia_product
+        AlgoliaPatchProductJob.perform_later self
+    end
+
+    def destroy_algolia_product
+        AlgoliaDestroyProductJob.perform_later self
     end
 end
