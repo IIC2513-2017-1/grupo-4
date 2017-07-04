@@ -12,6 +12,8 @@ gem 'faker'
 gem 'font-awesome-rails'
 gem 'httparty'
 gem 'jquery-ui-rails'
+gem 'chart-js-rails'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'

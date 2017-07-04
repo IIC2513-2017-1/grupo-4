@@ -4,8 +4,19 @@
             <h1>Dashboard</h1>
         </div>
     </div>
+    <div class="row">   
+        <div class="col-6">
+            <%= content_tag :canvas, "", id: "mypieChart", width: "350", height:"200", data: {dis: @dispatched_num, not: @not_dispatched_num} %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <%= content_tag :canvas, "", id: "mybarChart", width: "400", height:"200", data: {a: @array} %>
+        </div>
+    </div>
     <div class="row"> 
-        <div class="col-8">            
+        <div class="col-8"> 
+            <hr>           
             <h3>Transacciones no despachadas</h3>
             <%= render "transactions/transaction_list", transactions: @transactions_not_dispatched %>
         </div>
