@@ -1,18 +1,18 @@
 <% if transactions.length > 0%>
-    <% for i in 0..2 %>
+    <% transactions.each do |transaction| %>
         <div class="transaction-container">
             <div class="transaction-name">
-                <%= "Transacción #" + (transactions[i].id).to_s %>
+                <%= "Transacción #" + (transaction.id).to_s %>
             </div>
             <div class="transaction-date">                        
-                <%= "Fecha de la transacción: " + (transactions[i].created_at).to_s %>
+                <%= "Fecha de la transacción: " + (transaction.created_at).to_s %>
             </div>
             <div class="transaction-cost">
-                <%= "Precio total transacción: " + number_to_currency(transactions[i].shopping_cart.products.sum(:price)).to_s %>
+                <%= "Precio total transacción: " + number_to_currency(transaction.shopping_cart.products.sum(:price)).to_s %>
             </div>
 
             <div class="transaction-show">
-                <%= link_to fa_icon("search", text: "Ver transaccion"), transaction_path(transactions[i]), class: "button" %>
+                <%= link_to fa_icon("search", text: "Ver transaccion"), transaction_path(transaction), class: "button" %>
             </div>
         </div>
     <% end %>
